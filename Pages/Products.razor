@@ -1,0 +1,39 @@
+﻿@page "/products"
+
+<h1>Our Products</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Product> products = new()
+    {
+        new Product { Name = "Bookkeeping Pro", Description = "Manage daily financials with ease.", Price = 49.99m },
+        new Product { Name = "Payroll Master", Description = "Automated payroll for your team.", Price = 29.99m },
+        new Product { Name = "TaxFiler 360", Description = "Prepare and file taxes hassle-free.", Price = 59.99m },
+    };
+
+    public class Product
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+    }
+}
