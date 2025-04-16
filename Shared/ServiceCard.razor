@@ -1,0 +1,18 @@
+﻿<div class="card h-100 text-center rounded-0 service-card animate__animated animate__fadeInUp animate__delay-1s">
+    <div class="card-body px-2 py-3">
+        <div class="mb-2 text-primary">
+            <i class="@Icon" style="font-size: 1.5rem;"></i>
+        </div>
+        <h6 class="fw-bold text-primary">@Title</h6>
+        @foreach (var line in DescriptionLines)
+        {
+            <p class="small mb-1">✓ @line</p>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Icon { get; set; }
+    [Parameter] public string Title { get; set; }
+    [Parameter] public List<string> DescriptionLines { get; set; } = new();
+}

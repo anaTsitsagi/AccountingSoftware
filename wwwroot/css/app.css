@@ -101,3 +101,18 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    }
+
+.top-row,
+article {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
