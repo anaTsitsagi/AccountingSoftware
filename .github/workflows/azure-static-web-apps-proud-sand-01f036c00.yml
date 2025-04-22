@@ -52,9 +52,6 @@ jobs:
           app_build_command:        "dotnet publish -c Release -o publish_output"
           # And tell the action where to find the output
           app_artifact_location:     "publish_output/wwwroot"
-          # No API to build
-          skip_api_build:            true
-          skip_app_build:            true
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
