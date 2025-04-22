@@ -103,12 +103,12 @@ code {
 }
 
 .service-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
     .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+        transform: translateY(-5px) !important;
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2) !important;
     }
 
 .top-row,
@@ -116,3 +116,5 @@ article {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+

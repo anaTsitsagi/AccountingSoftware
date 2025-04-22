@@ -1,14 +1,82 @@
 ﻿@inherits LayoutComponentBase
 <div class="page">
-@*     <div class="sidebar">
-        <NavMenu />
-    </div> *@
 
-    <main>
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-10">
+        <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+            <a href="/" class="text-2xl font-bold text-accent1">Logyx.tech</a>
+
+            <!-- Desktop menu -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#services" class="hover:text-accent2 transition">Services</a></li>
+                <li><a href="#about" class="hover:text-accent2 transition">About</a></li>
+                <li><a href="#contact" class="hover:text-accent2 transition">Contact</a></li>
+            </ul>
+
+            <!-- Mobile hamburger -->
+            <button class="md:hidden p-2 focus:outline-none" @onclick="ToggleMenu">
+                @if (!isMenuOpen)
+                {
+                    <!-- Hamburger icon -->
+                    <svg class="w-6 h-6 text-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                }
+                else
+                {
+                    <!-- “X” close icon -->
+                    <svg class="w-6 h-6 text-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                }
+            </button>
+
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden bg-white shadow-md" style="display:@(isMenuOpen ? "block" : "none")">
+            <ul class="flex flex-col space-y-4 p-4">
+                <li><a href="#services" class="hover:text-accent2 transition" @onclick="ToggleMenu">Services</a></li>
+                <li><a href="#about" class="hover:text-accent2 transition" @onclick="ToggleMenu">About</a></li>
+                <li><a href="#contact" class="hover:text-accent2 transition" @onclick="ToggleMenu">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="m-0 p-0 w-100 pt-20">
         <article class="m-0 p-0 w-100">
             @Body
         </article>
+        <!-- Sticky Contact Bar -->
+        <footer class="bg-accent1 text-white py-4">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+                <!-- Left side -->
+                <div class="text-sm">
+                    Logyx.tech © 2025 All rights reserved.
+                </div>
+
+                <!-- Right side -->
+                <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
+                    <p class="text-sm">contact@yourcompany.com</p>
+@*                     <a href="mailto:contact@yourcompany.com"
+                       class="inline-block bg-white text-accent1 font-medium px-6 py-2 rounded-full
+               hover:bg-gray-100 transition duration-200 text-sm">
+                        Let's Talk
+                    </a> *@
+                </div>
+            </div>
+        </footer>
     </main>
+
+
+    @code {
+        private bool isMenuOpen;
+
+        void ToggleMenu()
+        {
+            isMenuOpen = !isMenuOpen;
+        }
+    }
 </div>
 
 

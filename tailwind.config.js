@@ -3,7 +3,14 @@ module.exports = {
     './wwwroot/index.html',
     './**/*.razor',
     './**/*.cshtml'
-  ],
+    ],
+    safelist: [
+        'flip-card',
+        'flip-card-inner',
+        'flipped',
+        'flip-card-front',
+        'flip-card-back'
+    ],
   theme: {
     extend: {
       colors: {

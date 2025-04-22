@@ -1,0 +1,80 @@
+﻿@page "/contact"
+@using System.ComponentModel.DataAnnotations
+
+<div class="max-w-2xl mx-auto mt-20 mb-16 px-6">
+    <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
+
+    @if (submitted)
+    {
+        <div class="bg-green-100 border border-green-300 text-green-800 p-4 rounded mb-6">
+            Thanks for reaching out! We’ll get back to you as soon as possible.
+        </div>
+    }
+
+    <EditForm Model="contactModel" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-red-600 mb-4" />
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Name</label>
+            <InputText @bind-Value="contactModel.Name"
+                       class="w-full border rounded p-2" />
+            <ValidationMessage For="@(() => contactModel.Name)"
+                               class="text-red-600 text-sm mt-1" />
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Email</label>
+            <InputText @bind-Value="contactModel.Email" type="email"
+                       class="w-full border rounded p-2" />
+            <ValidationMessage For="@(() => contactModel.Email)"
+                               class="text-red-600 text-sm mt-1" />
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Subject</label>
+            <InputText @bind-Value="contactModel.Subject"
+                       class="w-full border rounded p-2" />
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-medium mb-1">Message</label>
+            <InputTextArea @bind-Value="contactModel.Message" rows="6"
+                           class="w-full border rounded p-2" />
+            <ValidationMessage For="@(() => contactModel.Message)"
+                               class="text-red-600 text-sm mt-1" />
+        </div>
+
+        <button type="submit"
+                class="bg-accent1 text-white font-medium py-2 px-6 rounded hover:bg-accent2 transition">
+            Send Message
+        </button>
+    </EditForm>
+</div>
+
+@code {
+    bool submitted;
+    ContactModel contactModel = new();
+
+    void HandleValidSubmit()
+    {
+        // TODO: send `contactModel` to your API or mail service here
+        submitted = true;
+        contactModel = new(); // reset form
+    }
+
+    class ContactModel
+    {
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        public string Email { get; set; }
+
+        public string Subject { get; set; }
+
+        [Required(ErrorMessage = "Please enter a message.")]
+        public string Message { get; set; }
+    }
+}

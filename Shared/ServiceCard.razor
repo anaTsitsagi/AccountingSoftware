@@ -1,18 +1,89 @@
-﻿<div class="card h-100 text-center rounded-0 service-card animate__animated animate__fadeInUp animate__delay-1s">
-    <div class="card-body px-2 py-3">
-        <div class="mb-2 text-primary">
-            <i class="@Icon" style="font-size: 1.5rem;"></i>
-        </div>
-        <h6 class="fw-bold text-primary">@Title</h6>
-        @foreach (var line in DescriptionLines)
-        {
-            <p class="small mb-1">✓ @line</p>
+﻿@inject NavigationManager NavManager
+
+<style>
+    /* 1) Wrapper sets up the perspective */
+    .flip-card {
+        perspective: 1000px;
+    }
+
+    /* 2) Inner preserves 3D & animates */
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d; /* ← VERY important */
+        transition: transform 0.6s;
+    }
+
+        /* 3) When flipped, spin 180° around Y */
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
         }
+
+    /* 4) Both faces fill the space… */
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        /* Hide the reverse side of each face */
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* 5) Front sits as-is */
+    .flip-card-front {
+        transform: rotateY(0deg);
+    }
+
+    /* 6) Back is pre-rotated 180° so it reads upright once its parent spins */
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+
+</style>
+<div @onclick="ToggleFlip"
+     class="flip-card w-full h-64"
+     style="cursor:pointer;">
+    <div class="flip-card-inner @(isFlipped ? "flipped" : "")">
+        <!-- FRONT FACE -->
+        <div class="flip-card-front bg-white rounded-2xl p-6 shadow-sm
+                   hover:shadow-lg transition duration-200 flex flex-col items-center justify-center">
+            <div class="text-accent1 mb-4 text-3xl">
+                <i class="bi @Icon"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">@Title</h3>
+            <p class="text-sm text-gray-700 text-center">@Description</p>
+        </div>
+
+        <!-- BACK FACE -->
+        <div class="flip-card-back bg-accent1 text-white rounded-2xl p-6
+                   flex flex-col items-center justify-center">
+            <h3 class="text-2xl font-bold mb-4">Learn More</h3>
+            <p class="text-center mb-6">@BackText</p>
+            <button class="bg-white text-accent1 font-medium py-2 px-4 rounded-full
+                       hover:bg-gray-100 transition duration-200"
+                    @onclick:stopPropagation="true"
+                    @onclick="() => NavManager.NavigateTo(Link)">
+                Go to Details
+            </button>
+        </div>
     </div>
 </div>
 
 @code {
     [Parameter] public string Icon { get; set; }
     [Parameter] public string Title { get; set; }
-    [Parameter] public List<string> DescriptionLines { get; set; } = new();
+    [Parameter] public string Description { get; set; }
+    [Parameter] public string BackText { get; set; }
+    [Parameter] public string Link { get; set; }
+
+    private bool isFlipped;
+
+    private void ToggleFlip()
+    {
+        isFlipped = !isFlipped;
+    }
 }

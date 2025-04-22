@@ -1,0 +1,78 @@
+﻿@page "/services/e2e-development"
+@inject NavigationManager Nav
+
+<div class="max-w-4xl mx-auto mt-20 mb-16 px-6">
+    <!-- Back button -->
+    <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
+               hover:bg-accent1 hover:text-white transition"
+            @onclick="GoBack">
+        ← Back
+    </button>
+
+    <!-- Page title -->
+    <h1 class="text-3xl font-bold mb-8">E2E Solution Development</h1>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @foreach (var item in Items)
+        {
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition p-6 flex flex-col items-center text-center">
+                <div class="text-accent1 mb-4 text-4xl">
+                    <i class="bi @item.Icon"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">@item.Title</h3>
+                <p class="text-gray-700">@item.Description</p>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    void GoBack() => Nav.NavigateTo("/");
+
+    class ServiceItem
+    {
+        public string Icon { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
+
+    List<ServiceItem> Items = new()
+    {
+        new ServiceItem {
+            Icon = "bi-globe",
+            Title = "Web Development",
+            Description = "Create responsive, user‑friendly web applications with the latest front‑end and back‑end technologies."
+        },
+        new ServiceItem {
+            Icon = "bi-plug",
+            Title = "Integration Development",
+            Description = "Connect your solution to various software systems and APIs for smooth data flow and interoperability."
+        },
+        new ServiceItem {
+            Icon = "bi-robot",
+            Title = "AI & Machine Learning",
+            Description = "Incorporate AI and machine learning capabilities to automate tasks and enhance user experiences."
+        },
+        new ServiceItem {
+            Icon = "bi-cloud",
+            Title = "Cloud Services",
+            Description = "Architect and deploy cloud‑native services on AWS, Azure, or Google Cloud for scalability and reliability."
+        },
+        new ServiceItem {
+            Icon = "bi-server",
+            Title = "Services Development",
+            Description = "Design and implement scalable backend services and APIs to power your applications and integrations."
+        },
+        new ServiceItem {
+            Icon = "bi-phone",
+            Title = "Mobile Development",
+            Description = "Develop cross‑platform mobile apps for iOS and Android, ensuring seamless performance and a native feel."
+        },
+        new ServiceItem {
+            Icon = "bi-laptop",
+            Title = "Desktop App Development",
+            Description = "We build robust, feature‑rich desktop applications tailored to your business requirements using modern frameworks."
+        }
+    };
+}

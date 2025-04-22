@@ -1,84 +1,210 @@
 ﻿@page "/"
+@using AccountingSoftware.Shared
+@using System.ComponentModel.DataAnnotations
 
-<!-- Main Container: Full Viewport -->
-<div class="d-flex flex-column vh-100 text-white bg-dark m-0 p-0 overflow-hidden">
-
-    <!-- Header (25% height) -->
-    <div class="container-fluid text-center d-flex flex-column justify-content-center align-items-center" style="height: 25vh;">
-        <h2 class="fw-semibold mb-1">Empowering Your Vision</h2>
-        <p class="small mb-0">Tech-driven solutions to scale your business</p>
+<nav class="fixed top-0 left-0 w-full bg-white shadow-none z-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+        <a href="/" class="text-xl font-bold text-accent1">Logyx.tech</a>
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="#services" class="hover:text-accent2 transition">Services</a></li>
+            <li><a href="#about" class="hover:text-accent2 transition">About</a></li>
+            <li><a href="#contact" class="hover:text-accent2 transition">Contact</a></li>
+        </ul>
+        <!-- Mobile toggle omitted for brevity -->
     </div>
+</nav>
+
+<div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
+    <header class="relative w-full h-screen">
+        <!-- 1) Full‑bleed background -->
+        <div class="absolute inset-0 bg-[url('/images/hero.jpg')] bg-center bg-cover bg-no-repeat"
+             aria-hidden="true">
+        </div>
+
+        <!-- 2) Your content, constrained to a nice max‑width -->
+        <div class="relative max-w-6xl mx-auto h-full flex flex-col items-start justify-center px-6 text-white text-left">
+            <h1 class="text-5xl font-bold mb-4">Empowering Your Vision</h1>
+            <p class="text-xl mb-8">Tech‑driven solutions to scale your business</p>
+            <a href="#services"
+               class="bg-white text-accent1 font-medium py-3 px-8 rounded-full
+             hover:bg-gray-100 hover:shadow-lg transition duration-200">
+                Explore Our Services
+            </a>
+        </div>
+    </header>
+
 
     <!-- Services Grid -->
-    <div class="container-fluid px-0 flex-grow-1">
-        <div class="row g-0 text-dark h-100">
+    <main id="services" class="py-16 px-6 bg-background">
+        <h2 class="text-3xl font-semibold text-center mb-12">Our Services</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            <!-- IT Strategy -->
-            <div class="col-6 col-md-3">
-                <div class="card h-100 text-center rounded-0 animate__animated animate__fadeInUp animate__delay-1s service-card">
-                    <div class="card-body px-2 py-3">
-                        <div class="mb-2 text-primary"><i class="bi bi-compass" style="font-size: 1.5rem;"></i></div>
-                        <h6 class="fw-bold text-primary">IT Strategy</h6>
-                        <p class="small mb-1">✓ In-depth understanding of your business needs</p>
-                        <p class="small mb-1">✓ Evaluate and align with your budget</p>
-                        <p class="small mb-1">✓ Provide multiple tailored IT strategies</p>
-                        <p class="small">✓ Help select the best-fit solution collaboratively</p>
-                    </div>
-                </div>
-            </div>
+            <ServiceCard Icon="bi-compass"
+                         Title="IT Strategy"
+                         Description="In‑depth understanding of your business needs, aligned to budget"
+                         BackText="We’ll define & compare multiple tailored IT strategies so you can choose the best fit."
+                         Link="/services/it-strategy" />
 
-            <!-- Solution Design -->
-            <div class="col-6 col-md-3">
-                <div class="card h-100 text-center rounded-0 animate__animated animate__fadeInUp animate__delay-1s service-card">
-                    <div class="card-body px-2 py-3">
-                        <div class="mb-2 text-primary"><i class="bi bi-diagram-3" style="font-size: 1.5rem;"></i></div>
-                        <h6 class="fw-bold text-primary">Solution Design</h6>
-                        <p class="small mb-1">✓ You bring a clear business idea and strategy</p>
-                        <p class="small mb-1">✓ We analyze modules and write technical specs</p>
-                        <p class="small mb-1">✓ Build a complete delivery pipeline</p>
-                        <p class="small mb-1">✓ Define all tasks needed for delivery</p>
-                        <p class="small">✓ Share plans via Jira, Trello, or Azure DevOps</p>
-                    </div>
-                </div>
-            </div>
+            <ServiceCard Icon="bi-diagram-3"
+                         Title="Solution Design"
+                         Description="You bring a clear business idea and strategy; we analyze modules, write technical specs, build a delivery pipeline, define all tasks, and share plans via Jira, Trello, or Azure DevOps."
+                         BackText="From modules to milestones—get a complete, transparent plan ready for development."
+                         Link="/services/solution-design" />
 
-            <!-- E2E Solution Development -->
-            <div class="col-6 col-md-3">
-                <div class="card h-100 text-center rounded-0 animate__animated animate__fadeInUp animate__delay-1s service-card">
-                    <div class="card-body px-2 py-3">
-                        <div class="mb-2 text-primary"><i class="bi bi-cpu" style="font-size: 1.5rem;"></i></div>
-                        <h6 class="fw-bold text-primary">E2E Solution Development</h6>
-                        <p class="small mb-1">✓ Build desktop applications</p>
-                        <p class="small mb-1">✓ Develop scalable backend services</p>
-                        <p class="small mb-1">✓ Create modern web solutions</p>
-                        <p class="small mb-1">✓ Develop cross-platform mobile apps</p>
-                        <p class="small mb-1">✓ Integrate with existing software</p>
-                        <p class="small mb-1">✓ Implement cloud-based services</p>
-                        <p class="small">✓ Apply AI where beneficial</p>
-                    </div>
-                </div>
-            </div>
+            <ServiceCard Icon="bi-cpu"
+                         Title="Software Development"
+                         Description="Build desktop applications, scalable backend services, modern web & cross‑platform mobile apps, integrate existing software, implement cloud services, and apply AI where beneficial."
+                         BackText="Full‑stack, end‑to‑end development tailored to your needs, with seamless integration & scaling."
+                         Link="/services/e2e-development" />
 
-            <!-- Support & Future Plan -->
-            <div class="col-6 col-md-3">
-                <div class="card h-100 text-center rounded-0 animate__animated animate__fadeInUp animate__delay-1s service-card">
-                    <div class="card-body px-2 py-3">
-                        <div class="mb-2 text-primary"><i class="bi bi-tools" style="font-size: 1.5rem;"></i></div>
-                        <h6 class="fw-bold text-primary">Support & Future Plan</h6>
-                        <p class="small mb-1">✓ Ongoing support for all delivered apps</p>
-                        <p class="small mb-1">✓ Choose from 4 support levels</p>
-                        <p class="small mb-1">✓ Request solution reviews anytime</p>
-                        <p class="small">✓ Get updated designs with implementation roadmap</p>
-                    </div>
-                </div>
-            </div>
-
+            <ServiceCard Icon="bi-tools"
+                         Title="Support & Future Plan"
+                         Description="Ongoing support for all delivered apps, four levels of service, on‑demand solution reviews, and updated designs with implementation roadmaps."
+                         BackText="Keep your systems running smoothly and evolve with confidence using our flexible support tiers."
+                         Link="/services/support" />
         </div>
-    </div>
+    </main>
 
-    <!-- Sticky Contact Bar -->
-    <footer class="bg-primary text-white text-center py-2 position-sticky bottom-0 w-100">
-        <p class="mb-1">📧 contact@yourcompany.com | 🌐 yourcompany.com</p>
-        <a href="mailto:contact@yourcompany.com" class="btn btn-sm btn-light">Let's Talk</a>
-    </footer>
+    <!-- About Us -->
+    <section id="about" class="py-16 px-6 bg-white">
+        <div class="max-w-6xl mx-auto space-y-12">
+            <!-- Intro -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="/images/about-illustration.png"
+                         alt="About us illustration"
+                         class="w-full rounded-xl shadow-md" />
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">About Logyx.tech</h2>
+                    <p class="mb-4 text-gray-700 leading-relaxed">
+                        At Logyx.tech, we’re passionate about turning your vision into reality.
+                        With years of experience in IT strategy, solution design, and end‑to‑end development,
+                        our team partners with you to craft tailored software solutions that scale.
+                    </p>
+                    <p class="mb-6 text-gray-700 leading-relaxed">
+                        From the initial brainstorming session to long‑term support and future planning,
+                        we’re with you every step of the way—bringing clarity to complexity and
+                        innovation to every project.
+                    </p>
+                    <a href="#contact"
+                       class="inline-block bg-accent1 text-white font-medium py-2 px-6 rounded-full
+                 hover:bg-accent2 transition duration-200">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Our Team -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-6">Our Team</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">Alice Smith</h4>
+                        <p class="text-gray-700">Lead Developer with 10+ years of experience crafting scalable .NET and Blazor applications.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">Bob Johnson</h4>
+                        <p class="text-gray-700">Project Manager who keeps everything on track, coordinating between stakeholders and dev teams.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">Carol Lee</h4>
+                        <p class="text-gray-700">UX/UI Designer focused on creating intuitive and accessible interfaces that delight users.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">David Kim</h4>
+                        <p class="text-gray-700">Cloud Architect and DevOps specialist, ensuring your solutions are robust and production‑ready.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">Eva García</h4>
+                        <p class="text-gray-700">AI/ML Engineer bringing intelligent automation and data‑driven insights into every project.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium mb-1">Frank Müller</h4>
+                        <p class="text-gray-700">Quality Assurance lead, passionate about delivering bug‑free and high‑performance software.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 px-6 bg-background">
+        <h2 class="text-2xl font-semibold text-center mb-6">Contact Us</h2>
+
+        @if (contactSubmitted)
+        {
+            <div class="max-w-2xl mx-auto bg-green-100 border border-green-300 text-green-800 p-3 rounded mb-6">
+                Thanks for reaching out! We’ll be in touch soon.
+            </div>
+        }
+
+        <EditForm Model="contactModel" OnValidSubmit="HandleContactSubmit" class="max-w-2xl mx-auto space-y-4">
+            <DataAnnotationsValidator />
+
+            <!-- Name + Email on one row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <InputText @bind-Value="contactModel.Name" class="w-full border rounded p-2 text-sm" placeholder="Your name" />
+                    <ValidationMessage For="@(() => contactModel.Name)" class="text-red-600 text-xs mt-1" />
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Email</label>
+                    <InputText @bind-Value="contactModel.Email" type="email" class="w-full border rounded p-2 text-sm" placeholder="you@example.com" />
+                    <ValidationMessage For="@(() => contactModel.Email)" class="text-red-600 text-xs mt-1" />
+                </div>
+            </div>
+
+            <!-- Subject -->
+            <div>
+                <label class="block text-sm font-medium mb-1">Subject</label>
+                <InputText @bind-Value="contactModel.Subject" class="w-full border rounded p-2 text-sm" placeholder="Subject (optional)" />
+            </div>
+
+            <!-- Message -->
+            <div>
+                <label class="block text-sm font-medium mb-1">Message</label>
+                <InputTextArea @bind-Value="contactModel.Message" rows="4" class="w-full border rounded p-2 text-sm" placeholder="Your message…" />
+                <ValidationMessage For="@(() => contactModel.Message)" class="text-red-600 text-xs mt-1" />
+            </div>
+
+            <!-- Submit -->
+            <div class="text-right">
+                <button type="submit"
+                        class="bg-accent1 text-white text-sm font-medium py-2 px-6 rounded hover:bg-accent2 transition">
+                    Send
+                </button>
+            </div>
+        </EditForm>
+    </section>
+
 </div>
+@code {
+    bool contactSubmitted;
+    ContactModel contactModel = new();
+
+    void HandleContactSubmit()
+    {
+        // TODO: wire up API / email send here
+        contactSubmitted = true;
+        contactModel = new(); // reset form
+    }
+
+    class ContactModel
+    {
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        public string Email { get; set; }
+
+        public string Subject { get; set; }
+
+        [Required(ErrorMessage = "Please enter a message.")]
+        public string Message { get; set; }
+    }
+}
