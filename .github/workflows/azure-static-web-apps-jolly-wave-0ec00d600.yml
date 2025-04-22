@@ -42,7 +42,7 @@ jobs:
           action: upload
           # Your app source (repo root) and optional API folder
           app_location: "/"              
-          api_location: "Api"            
+          api_location: ""            
           # Point to the folder you just published
           app_artifact_location: "publish_output/wwwroot"
           # Skip Oryx builds since you pre‑built above
