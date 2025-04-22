@@ -117,10 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Hero_Title" xml:space="preserve">
-    <value>Empowering Your Vision</value>
-  </data>
-  <data name="Hero_Subtext" xml:space="preserve">
-    <value>Tech‑driven solutions to scale your business</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Hero_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

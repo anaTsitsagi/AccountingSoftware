@@ -1,22 +1,56 @@
-﻿@inherits LayoutComponentBase
-<div class="page">
+﻿@using System.Globalization
+@inherits LayoutComponentBase
+@inject NavigationManager Nav
+@inject IJSRuntime JS
 
-    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-10">
-        <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-            <a href="/" class="text-2xl font-bold text-accent1">Logyx.tech</a>
+<div class="page">
+    <nav class="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-20">
+        <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+
+            <!-- Logo -->
+            <a href="/" class="text-2xl font-extrabold text-accent1 hover:text-accent2 transition">
+                Logyx.tech
+            </a>
 
             <!-- Desktop menu -->
-            <ul class="hidden md:flex space-x-6">
-                <li><a href="#services" class="hover:text-accent2 transition">Services</a></li>
-                <li><a href="#about" class="hover:text-accent2 transition">About</a></li>
-                <li><a href="#contact" class="hover:text-accent2 transition">Contact</a></li>
+            <ul class="hidden md:flex items-center space-x-8">
+                <li>
+                    <a href="#services"
+                       class="text-accent1 hover:text-accent2 transition">
+                        Services
+                    </a>
+                </li>
+                <li>
+                    <a href="#about"
+                       class="text-accent1 hover:text-accent2 transition">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact"
+                       class="text-accent1 hover:text-accent2 transition">
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <select class="border border-accent1 text-accent1 rounded p-1 text-sm
+                 hover:border-accent2 hover:text-accent2 transition"
+                            @onchange="ChangeCulture"
+                            value="@currentCulture">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="ka">KA</option>
+                    </select>
+                </li>
             </ul>
 
-            <!-- Mobile hamburger -->
-            <button class="md:hidden p-2 focus:outline-none" @onclick="ToggleMenu">
+            <!-- Mobile toggle -->
+            <button class="md:hidden p-2 rounded hover:bg-gray-100 transition"
+                    @onclick="ToggleMenu"
+                    aria-label="Toggle menu">
                 @if (!isMenuOpen)
                 {
-                    <!-- Hamburger icon -->
+                    <!-- Hamburger -->
                     <svg class="w-6 h-6 text-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M4 6h16M4 12h16M4 18h16" />
@@ -24,22 +58,50 @@
                 }
                 else
                 {
-                    <!-- “X” close icon -->
+                    <!-- Close -->
                     <svg class="w-6 h-6 text-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                               d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 }
             </button>
-
         </div>
 
         <!-- Mobile menu -->
-        <div class="md:hidden bg-white shadow-md" style="display:@(isMenuOpen ? "block" : "none")">
-            <ul class="flex flex-col space-y-4 p-4">
-                <li><a href="#services" class="hover:text-accent2 transition" @onclick="ToggleMenu">Services</a></li>
-                <li><a href="#about" class="hover:text-accent2 transition" @onclick="ToggleMenu">About</a></li>
-                <li><a href="#contact" class="hover:text-accent2 transition" @onclick="ToggleMenu">Contact</a></li>
+        <div class="md:hidden bg-white border-t border-gray-200 transition-max-h duration-300 overflow-hidden"
+             style="max-height:@(isMenuOpen ? "300px" : "0")">
+            <ul class="flex flex-col px-6 py-4 space-y-4">
+                <li>
+                    <a href="#services"
+                       class="text-accent1 hover:text-accent2 transition"
+                       @onclick="ToggleMenu">
+                        Services
+                    </a>
+                </li>
+                <li>
+                    <a href="#about"
+                       class="text-accent1 hover:text-accent2 transition"
+                       @onclick="ToggleMenu">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact"
+                       class="text-accent1 hover:text-accent2 transition"
+                       @onclick="ToggleMenu">
+                        Contact
+                    </a>
+                </li>
+                <li>
+                    <select class="border border-accent1 text-accent1 rounded p-1 text-sm
+                 hover:border-accent2 hover:text-accent2 transition"
+                            @onchange="ChangeCulture"
+                            value="@currentCulture">
+                        <option value="en">EN</option>
+                        <option value="ru">RU</option>
+                        <option value="ka">KA</option>
+                    </select>
+                </li>
             </ul>
         </div>
     </nav>
@@ -75,6 +137,14 @@
         void ToggleMenu()
         {
             isMenuOpen = !isMenuOpen;
+        }
+        string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+
+        async Task ChangeCulture(ChangeEventArgs e)
+        {
+            var culture = e.Value.ToString();
+            await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", culture);
+            Nav.NavigateTo(Nav.Uri, forceLoad: true);
         }
     }
 </div>

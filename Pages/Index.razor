@@ -1,18 +1,8 @@
 ﻿@page "/"
 @using AccountingSoftware.Shared
 @using System.ComponentModel.DataAnnotations
-
-<nav class="fixed top-0 left-0 w-full bg-white shadow-none z-10">
-    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-        <a href="/" class="text-xl font-bold text-accent1">Logyx.tech</a>
-        <ul class="hidden md:flex space-x-6">
-            <li><a href="#services" class="hover:text-accent2 transition">Services</a></li>
-            <li><a href="#about" class="hover:text-accent2 transition">About</a></li>
-            <li><a href="#contact" class="hover:text-accent2 transition">Contact</a></li>
-        </ul>
-        <!-- Mobile toggle omitted for brevity -->
-    </div>
-</nav>
+@using Microsoft.Extensions.Localization
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Pages.Index> L
 
 <div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
     <header class="relative w-full h-screen">
