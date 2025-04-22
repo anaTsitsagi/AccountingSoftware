@@ -23,5 +23,6 @@
     "tailwindcss": "^4.1.4"
   },
   "dependencies": {},
-  "description": ""
+  "description": "",
+  "engines": { "node": ">=18.0.0" }
 }
