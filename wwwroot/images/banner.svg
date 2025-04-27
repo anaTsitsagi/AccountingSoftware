@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 400"
+  preserveAspectRatio="none"
+>
+  <defs>
+    <!-- 1) Gradient using your logo colors -->
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#E7335A"/>
+      <stop offset="50%"  stop-color="#2F439C"/>
+      <stop offset="100%" stop-color="#2AB1BC"/>
+    </linearGradient>
+
+    <!-- 2) A light node‐and‐line pattern -->
+    <g id="nodes">
+      <circle cx="50"  cy="350" r="4"  fill="white" fill-opacity="0.3"/>
+      <circle cx="300" cy="200" r="4"  fill="white" fill-opacity="0.3"/>
+      <circle cx="600" cy="100" r="4"  fill="white" fill-opacity="0.3"/>
+      <circle cx="900" cy="250" r="4"  fill="white" fill-opacity="0.3"/>
+      <circle cx="1150"cy="150" r="4"  fill="white" fill-opacity="0.3"/>
+
+      <line x1="50"   y1="350" x2="300"  y2="200" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+      <line x1="300"  y1="200" x2="600"  y2="100" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+      <line x1="600"  y1="100" x2="900"  y2="250" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+      <line x1="900"  y1="250" x2="1150" y2="150" stroke="white" stroke-width="2" stroke-opacity="0.1"/>
+    </g>
+  </defs>
+
+  <!-- 3) Background rectangle with gradient -->
+  <rect width="1200" height="400" fill="url(#grad)"/>
+
+  <!-- 4) Tiled pattern overlay -->
+  <g opacity="0.2">
+    <use href="#nodes"/>
+    <use href="#nodes" x="-1200"/>
+    <use href="#nodes" x="1200"/>
+  </g>
+</svg>
