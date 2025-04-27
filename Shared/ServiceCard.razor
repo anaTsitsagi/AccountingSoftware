@@ -15,10 +15,10 @@
         transition: transform 0.6s;
     }
 
-        /* 3) When flipped, spin 180° around Y */
-        .flip-card-inner.flipped {
-            transform: rotateY(180deg);
-        }
+    /* 3) Flip on hover instead of click */
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
 
     /* 4) Both faces fill the space… */
     .flip-card-front,
@@ -42,15 +42,12 @@
     .flip-card-back {
         transform: rotateY(180deg);
     }
-
 </style>
-<div @onclick="ToggleFlip"
-     class="flip-card w-full h-64"
-     style="cursor:pointer;">
-    <div class="flip-card-inner @(isFlipped ? "flipped" : "")">
+
+<div class="flip-card w-full h-64">
+    <div class="flip-card-inner">
         <!-- FRONT FACE -->
-        <div class="flip-card-front bg-white rounded-2xl p-6 shadow-sm
-                   hover:shadow-lg transition duration-200 flex flex-col items-center justify-center">
+        <div class="flip-card-front bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-200 flex flex-col items-center justify-center">
             <div class="text-accent1 mb-4 text-3xl">
                 <i class="bi @Icon"></i>
             </div>
@@ -59,12 +56,10 @@
         </div>
 
         <!-- BACK FACE -->
-        <div class="flip-card-back bg-accent1 text-white rounded-2xl p-6
-                   flex flex-col items-center justify-center">
+        <div class="flip-card-back bg-accent1 text-white rounded-2xl p-6 flex flex-col items-center justify-center">
             <h3 class="text-2xl font-bold mb-4">Learn More</h3>
             <p class="text-center mb-6">@BackText</p>
-            <button class="bg-white text-accent1 font-medium py-2 px-4 rounded-full
-                       hover:bg-gray-100 transition duration-200"
+            <button class="bg-white text-accent1 font-medium py-2 px-4 rounded-full hover:bg-gray-100 transition duration-200"
                     @onclick:stopPropagation="true"
                     @onclick="() => NavManager.NavigateTo(Link)">
                 Go to Details
@@ -79,11 +74,4 @@
     [Parameter] public string Description { get; set; }
     [Parameter] public string BackText { get; set; }
     [Parameter] public string Link { get; set; }
-
-    private bool isFlipped;
-
-    private void ToggleFlip()
-    {
-        isFlipped = !isFlipped;
-    }
 }

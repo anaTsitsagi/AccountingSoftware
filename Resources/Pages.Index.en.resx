@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="HeroHeading" xml:space="preserve">
+    <value>Empowering Your Vision</value>
+  </data>
+  <data name="HeroSubheading" xml:space="preserve">
+    <value>Tech-driven solutions to scale your business</value>
+  </data>
+  <data name="HeroButton" xml:space="preserve">
+    <value>Explore Our Services</value>
+  </data>
+  <data name="ServicesHeading" xml:space="preserve">
+    <value>Our Services</value>
+  </data>
+  <data name="AboutHeading" xml:space="preserve">
+    <value>About Logyx.tech</value>
+  </data>
+  <data name="AboutText1" xml:space="preserve">
+    <value>At Logyx.tech, we’re passionate about turning your vision into reality. With years of experience in IT strategy, solution design, and end-to-end development, our team partners with you to craft tailored software solutions that scale.</value>
+  </data>
+  <data name="AboutText2" xml:space="preserve">
+    <value>From the initial brainstorming session to long-term support and future planning, we’re with you every step of the way—bringing clarity to complexity and innovation to every project.</value>
+  </data>
+  <data name="AboutButton" xml:space="preserve">
+    <value>Get in Touch</value>
+  </data>
+  <data name="TeamHeading" xml:space="preserve">
+    <value>Our Team</value>
+  </data>
+  <data name="ContactSectionHeading" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SubjectLabel" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="SubmitButton" xml:space="preserve">
+    <value>Send</value>
+  </data>
+</root>
