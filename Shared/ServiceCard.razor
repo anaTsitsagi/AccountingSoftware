@@ -1,4 +1,8 @@
-﻿@inject NavigationManager NavManager
+﻿@using Microsoft.Extensions.Localization
+@using System.Globalization
+@inherits LayoutComponentBase
+@inject NavigationManager NavManager
+@inject IStringLocalizer<ServiceCard> L
 
 <style>
     /* 1) Wrapper sets up the perspective */
@@ -57,12 +61,12 @@
 
         <!-- BACK FACE -->
         <div class="flip-card-back bg-accent1 text-white rounded-2xl p-6 flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-4">Learn More</h3>
+            <h3 class="text-2xl font-bold mb-4">@L["LearnMoreHeading"]</h3>
             <p class="text-center mb-6">@BackText</p>
             <button class="bg-white text-accent1 font-medium py-2 px-4 rounded-full hover:bg-gray-100 transition duration-200"
                     @onclick:stopPropagation="true"
                     @onclick="() => NavManager.NavigateTo(Link)">
-                Go to Details
+                @L["GoToDetailsButton"]
             </button>
         </div>
     </div>

@@ -1,16 +1,21 @@
 ﻿@page "/services/e2e-development"
+@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inherits LayoutComponentBase
+
 @inject NavigationManager Nav
+@inject IStringLocalizer<SoftwareDevelopment> L
 
 <div class="max-w-4xl mx-auto mb-16 px-6 pt-32">
     <!-- Back button -->
     <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
-               hover:bg-accent1 hover:text-white transition"
+                   hover:bg-accent1 hover:text-white transition"
             @onclick="GoBack">
-        ← Back
+        @L["BackButtonText"]
     </button>
 
     <!-- Page title -->
-    <h1 class="text-3xl font-bold mb-8">E2E Solution Development</h1>
+    <h1 class="text-3xl font-bold mb-8">@L["PageTitle"]</h1>
 
     <!-- Cards grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -44,84 +49,82 @@
         public List<string> Points { get; set; }
     }
 
-    List<ServiceItem> Items = new()
+    List<ServiceItem> Items;
+
+    protected override void OnInitialized()
     {
-        new ServiceItem {
-            Icon   = "bi-globe",
-            Title  = "Web Development",
-            Points = new()
-            {
-                "Responsive UI with modern CSS frameworks (Tailwind, Bootstrap)",
-                "Single-Page Apps using Blazor or React for fluid UX",
-                "SEO-friendly markup and performance optimization",
-                "Headless CMS & e-commerce platform integrations"
+        Items = new()
+        {
+            new ServiceItem {
+                Icon   = "bi-globe",
+                Title  = L["WebDev_Title"],
+                Points = new() {
+                    L["WebDev_Point1"],
+                    L["WebDev_Point2"],
+                    L["WebDev_Point3"],
+                    L["WebDev_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-plug",
+                Title  = L["Integration_Title"],
+                Points = new() {
+                    L["Integration_Point1"],
+                    L["Integration_Point2"],
+                    L["Integration_Point3"],
+                    L["Integration_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-robot",
+                Title  = L["AIML_Title"],
+                Points = new() {
+                    L["AIML_Point1"],
+                    L["AIML_Point2"],
+                    L["AIML_Point3"],
+                    L["AIML_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-cloud",
+                Title  = L["Cloud_Title"],
+                Points = new() {
+                    L["Cloud_Point1"],
+                    L["Cloud_Point2"],
+                    L["Cloud_Point3"],
+                    L["Cloud_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-server",
+                Title  = L["Backend_Title"],
+                Points = new() {
+                    L["Backend_Point1"],
+                    L["Backend_Point2"],
+                    L["Backend_Point3"],
+                    L["Backend_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-phone",
+                Title  = L["Mobile_Title"],
+                Points = new() {
+                    L["Mobile_Point1"],
+                    L["Mobile_Point2"],
+                    L["Mobile_Point3"],
+                    L["Mobile_Point4"]
+                }
+            },
+            new ServiceItem {
+                Icon   = "bi-laptop",
+                Title  = L["Desktop_Title"],
+                Points = new() {
+                    L["Desktop_Point1"],
+                    L["Desktop_Point2"],
+                    L["Desktop_Point3"],
+                    L["Desktop_Point4"]
+                }
             }
-        },
-        new ServiceItem {
-            Icon   = "bi-plug",
-            Title  = "Integration Development",
-            Points = new()
-            {
-                "Design and consume RESTful and GraphQL APIs",
-                "Secure OAuth2 / JWT authentication flows",
-                "Middleware connectors for legacy systems",
-                "Event-driven data pipelines and webhooks"
-            }
-        },
-        new ServiceItem {
-            Icon   = "bi-robot",
-            Title  = "AI & Machine Learning",
-            Points = new()
-            {
-                "Data cleaning, feature engineering and model training",
-                "NLP solutions: chatbots, sentiment analysis",
-                "Computer Vision: image classification and object detection",
-                "Model deployment (TensorFlow, ONNX) and monitoring"
-            }
-        },
-        new ServiceItem {
-            Icon   = "bi-cloud",
-            Title  = "Cloud Services",
-            Points = new()
-            {
-                "Infrastructure as Code (Terraform, ARM templates)",
-                "Container orchestration with Docker & Kubernetes",
-                "Auto-scaling, high-availability architecture",
-                "CI/CD pipelines (GitHub Actions, Azure DevOps)"
-            }
-        },
-        new ServiceItem {
-            Icon   = "bi-server",
-            Title  = "Backend Services",
-            Points = new()
-            {
-                "Microservices using .NET/C# with DDD patterns",
-                "Scalable REST & gRPC APIs",
-                "Relational & NoSQL database design",
-                "Logging, health checks and observability"
-            }
-        },
-        new ServiceItem {
-            Icon   = "bi-phone",
-            Title  = "Mobile Development",
-            Points = new()
-            {
-                "Cross-platform apps with .NET MAUI or React Native",
-                "Native feature integration: GPS, Camera, Push",
-                "Offline data sync and local storage strategies",
-                "App Store and Play Store packaging & deployment"
-            }
-        },
-        new ServiceItem {
-            Icon   = "bi-laptop",
-            Title  = "Desktop App Development",
-            Points = new()
-            {
-                "Electron, .NET MAUI, WPF or WinForms solutions",
-                "Cross-platform installers and auto-updaters",
-                "Modern UI/UX with adaptive layouts",
-                "Integration with local hardware & services"
-            }
-        }
-    };
+        };
+    }
 }

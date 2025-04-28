@@ -1,24 +1,29 @@
-﻿@page "/services/it-strategy"
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inherits LayoutComponentBase
+
+@page "/services/it-strategy"
 @inject NavigationManager Nav
+@inject IStringLocalizer<ITStrategy> L
 
 <div class="max-w-4xl mx-auto mb-16 px-6 pt-32">
     <!-- Back button -->
     <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
-               hover:bg-accent1 hover:text-white transition"
+                   hover:bg-accent1 hover:text-white transition"
             @onclick="GoBack">
-        ← Back
+        @L["BackButtonText"]
     </button>
 
     <!-- Page title -->
-    <h1 class="text-3xl font-bold mb-4">IT Strategy</h1>
+    <h1 class="text-3xl font-bold mb-4">@L["PageTitle"]</h1>
 
-    <!-- New Intro Description -->
+    <!-- Intro Description -->
     <div class="mb-8">
-        <h2 class="text-xl font-semibold mb-2">When do you need this service?</h2>
+        <h2 class="text-xl font-semibold mb-2">@L["Intro_Heading"]</h2>
         <ul class="list-disc list-inside text-gray-700 space-y-1 text-lg">
-            <li>You're planning custom software but need accurate cost estimates before committing.</li>
-            <li>You have a business idea and need to translate it into precise technical requirements.</li>
-            <li>You want expert guidance on choosing the optimal tech stack and toolset.</li>
+            <li>@L["Intro_Point1"]</li>
+            <li>@L["Intro_Point2"]</li>
+            <li>@L["Intro_Point3"]</li>
         </ul>
     </div>
 
@@ -31,7 +36,6 @@
                 <button class="w-full flex items-center justify-between px-4 py-3 bg-gray-100 hover:bg-gray-200 transition"
                         @onclick="() => Toggle(step)">
                     <div class="flex items-center space-x-3">
-                        <!-- Step number badge -->
                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-accent1 text-white font-bold">
                             @num
                         </div>
@@ -70,49 +74,50 @@
         public bool IsExpanded { get; set; }
     }
 
-    List<Step> Steps = new()
+    List<Step> Steps;
+
+    protected override void OnInitialized()
     {
-        new Step {
-            Title = "Listening in detail to understand your business need",
-            Details = new()
-            {
-                "Conduct stakeholder interviews to uncover key pain-points and objectives",
-                "Map out existing workflows and data-flows to identify gaps",
-                "Clarify success metrics and technical constraints upfront",
-                "Align on project scope, timeline, and regulatory requirements"
+        Steps = new()
+        {
+            new Step {
+                Title   = L["Step1_Title"],
+                Details = new() {
+                    L["Step1_Point1"],
+                    L["Step1_Point2"],
+                    L["Step1_Point3"],
+                    L["Step1_Point4"]
+                }
+            },
+            new Step {
+                Title   = L["Step2_Title"],
+                Details = new() {
+                    L["Step2_Point1"],
+                    L["Step2_Point2"],
+                    L["Step2_Point3"],
+                    L["Step2_Point4"]
+                }
+            },
+            new Step {
+                Title   = L["Step3_Title"],
+                Details = new() {
+                    L["Step3_Point1"],
+                    L["Step3_Point2"],
+                    L["Step3_Point3"],
+                    L["Step3_Point4"]
+                }
+            },
+            new Step {
+                Title   = L["Step4_Title"],
+                Details = new() {
+                    L["Step4_Point1"],
+                    L["Step4_Point2"],
+                    L["Step4_Point3"],
+                    L["Step4_Point4"]
+                }
             }
-        },
-        new Step {
-            Title = "Identifying your budgeting options",
-            Details = new()
-            {
-                "Break down costs by development phases, licensing, and maintenance",
-                "Explore various delivery models: fixed-price, time-and-materials, hybrid",
-                "Compare on-premise vs. cloud hosting expense profiles",
-                "Perform ROI analysis and total cost of ownership (TCO) projections"
-            }
-        },
-        new Step {
-            Title = "Creating multiple IT strategic solutions for your needs",
-            Details = new()
-            {
-                "Draft alternative architectures: microservices vs. monolith, SaaS vs. custom",
-                "Specify recommended tech stacks (frontend, backend, data storage)",
-                "Assess scalability, security, and compliance implications of each option",
-                "Provide high-level timelines and resource plans per scenario"
-            }
-        },
-        new Step {
-            Title = "Reviewing each option together and selecting the best fit",
-            Details = new()
-            {
-                "Walk through pros, cons, and risk factors for every strategy",
-                "Answer questions and refine assumptions in real time",
-                "Prioritize features against budget and timeline constraints",
-                "Finalize a clear, actionable roadmap with defined milestones"
-            }
-        },
-    };
+        };
+    }
 
     void Toggle(Step step) => step.IsExpanded = !step.IsExpanded;
 }

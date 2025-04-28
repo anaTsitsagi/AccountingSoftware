@@ -1,7 +1,10 @@
 ﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
 @inherits LayoutComponentBase
+
 @inject NavigationManager Nav
 @inject IJSRuntime JS
+@inject IStringLocalizer<MainLayout> L
 
 <div class="page">
     <!-- 1) Absolute nav overlaps the banner, but is NOT fixed to viewport -->
@@ -16,16 +19,31 @@
 
             <!-- Desktop menu -->
             <ul class="hidden md:flex items-center space-x-8">
-                <li><a href="#services" class="text-black font-bold hover:text-gray-700">Services</a></li>
-                <li><a href="#about" class="text-black font-bold hover:text-gray-700">About</a></li>
-                <li><a href="#contact" class="text-black font-bold hover:text-gray-700">Contact</a></li>
+                <li>
+                    <a href="#services"
+                       class="text-black font-bold hover:text-gray-700">
+                        @L["Nav_Services"]
+                    </a>
+                </li>
+                <li>
+                    <a href="#about"
+                       class="text-black font-bold hover:text-gray-700">
+                        @L["Nav_About"]
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact"
+                       class="text-black font-bold hover:text-gray-700">
+                        @L["Nav_Contact"]
+                    </a>
+                </li>
                 <li>
                     <select class="border border-accent1 text-accent1 rounded p-1 text-sm hover:border-accent2 hover:text-accent2 transition"
                             @onchange="ChangeCulture"
                             value="@currentCulture">
-                        <option value="en">EN</option>
-                        <option value="ru">RU</option>
-                        <option value="ka">KA</option>
+                        <option value="en">@L["Lang_EN"]</option>
+                        <option value="ru">@L["Lang_RU"]</option>
+                        <option value="ka">@L["Lang_KA"]</option>
                     </select>
                 </li>
             </ul>
@@ -33,7 +51,7 @@
             <!-- Mobile toggle -->
             <button class="md:hidden p-2 rounded hover:bg-gray-100 transition"
                     @onclick="ToggleMenu"
-                    aria-label="Toggle menu">
+                    aria-label="@L["Aria_ToggleMenu"]">
                 @if (!isMenuOpen)
                 {
                     <svg class="w-6 h-6 text-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,16 +73,28 @@
         <div class="md:hidden bg-white transition-max-h duration-300 overflow-hidden"
              style="max-height:@(isMenuOpen ? "300px" : "0")">
             <ul class="flex flex-col px-6 py-4 space-y-4">
-                <li><a href="#services" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">Services</a></li>
-                <li><a href="#about" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">About</a></li>
-                <li><a href="#contact" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">Contact</a></li>
+                <li>
+                    <a href="#services" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">
+                        @L["Nav_Services"]
+                    </a>
+                </li>
+                <li>
+                    <a href="#about" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">
+                        @L["Nav_About"]
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="text-accent1 hover:text-accent2" @onclick="ToggleMenu">
+                        @L["Nav_Contact"]
+                    </a>
+                </li>
                 <li>
                     <select class="border border-accent1 text-accent1 rounded p-1 text-sm hover:border-accent2 hover:text-accent2 transition"
                             @onchange="ChangeCulture"
                             value="@currentCulture">
-                        <option value="en">EN</option>
-                        <option value="ru">RU</option>
-                        <option value="ka">KA</option>
+                        <option value="en">@L["Lang_EN"]</option>
+                        <option value="ru">@L["Lang_RU"]</option>
+                        <option value="ka">@L["Lang_KA"]</option>
                     </select>
                 </li>
             </ul>
@@ -80,25 +110,27 @@
         <!-- Footer -->
         <footer class="bg-accent1 text-white py-4">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
-                <div class="text-sm">Logyx.tech © 2025 All rights reserved.</div>
+                <div class="text-sm">@L["Footer_Copyright"]</div>
                 <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
-                    <p class="text-sm">contact@yourcompany.com</p>
+                    <p class="text-sm">info@logyx.tech</p>
                 </div>
             </div>
         </footer>
     </main>
-
-    @code {
-        private bool isMenuOpen;
-
-        void ToggleMenu() => isMenuOpen = !isMenuOpen;
-
-        string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-        async Task ChangeCulture(ChangeEventArgs e)
-        {
-            var culture = e.Value.ToString();
-            await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", culture);
-            Nav.NavigateTo(Nav.Uri, forceLoad: true);
-        }
-    }
 </div>
+
+@code {
+    private bool isMenuOpen;
+    string currentCulture = CultureInfo
+        .CurrentCulture.TwoLetterISOLanguageName;
+
+    void ToggleMenu() =>
+        isMenuOpen = !isMenuOpen;
+
+    async Task ChangeCulture(ChangeEventArgs e)
+    {
+        var culture = e.Value.ToString();
+        await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", culture);
+        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+    }
+}

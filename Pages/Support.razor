@@ -1,23 +1,28 @@
 ﻿@page "/services/support"
+@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inherits LayoutComponentBase
 @inject NavigationManager Nav
+@inject IStringLocalizer<Support> L
 
 <div class="max-w-4xl mx-auto mb-16 px-6 pt-32">
     <!-- Back button -->
     <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
-               hover:bg-accent1 hover:text-white transition"
+                 hover:bg-accent1 hover:text-white transition"
             @onclick="GoBack">
-        ← Back
+        @L["BackButtonText"]
     </button>
 
     <!-- Page title -->
-    <h1 class="text-3xl font-bold mb-8">Support &amp; Future Plan</h1>
+    <h1 class="text-3xl font-bold mb-8">@L["PageTitle"]</h1>
 
     <!-- Cards grid with alternating background colors -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        @foreach (var (step, idx) in Steps.Select((s, i) => (s, i)))
+        @for (int i = 0; i < Steps.Count; i++)
         {
-            var bgClass = BgClasses[idx % BgClasses.Length];
-            <div class="@($"{bgClass} rounded-2xl shadow-sm hover:shadow-lg transition p-6")">
+            var step = Steps[i];
+            var bg = BgClasses[i % BgClasses.Length];
+            <div class="@($"{bg} rounded-2xl shadow-sm hover:shadow-lg transition p-6")">
                 <h3 class="text-xl font-semibold mb-2">@step.Title</h3>
                 <p class="text-gray-700">@step.Description</p>
             </div>
@@ -28,14 +33,7 @@
 @code {
     void GoBack() => Nav.NavigateTo("/");
 
-    // cycle through these four subtle tints
-    string[] BgClasses = new[]
-    {
-        "bg-white",
-        "bg-gray-50",
-        "bg-gray-100",
-        "bg-gray-200"
-    };
+    string[] BgClasses = new[] { "bg-white", "bg-gray-50", "bg-gray-100", "bg-gray-200" };
 
     class Step
     {
@@ -43,23 +41,28 @@
         public string Description { get; set; }
     }
 
-    List<Step> Steps = new()
+    List<Step> Steps;
+
+    protected override void OnInitialized()
     {
-        new Step {
-            Title = "Continuous support for our applications is available.",
-            Description = "We offer ongoing maintenance, bug fixes, and feature updates to keep your software running smoothly."
-        },
-        new Step {
-            Title = "Choose from 4 different levels of support.",
-            Description = "Select the plan that fits your needs—ranging from basic monitoring to full‑time dedicated support."
-        },
-        new Step {
-            Title = "Request a solution review at any time.",
-            Description = "Have us reassess your application against the latest standards and best practices whenever you need."
-        },
-        new Step {
-            Title = "Receive updated designs and roadmaps.",
-            Description = "If changes are needed, we’ll deliver new designs along with a clear implementation plan."
-        },
+        Steps = new List<Step>
+    {
+      new Step {
+        Title       = L["Step1_Title"],
+        Description = L["Step1_Description"]
+      },
+      new Step {
+        Title       = L["Step2_Title"],
+        Description = L["Step2_Description"]
+      },
+      new Step {
+        Title       = L["Step3_Title"],
+        Description = L["Step3_Description"]
+      },
+      new Step {
+        Title       = L["Step4_Title"],
+        Description = L["Step4_Description"]
+      }
     };
+    }
 }
