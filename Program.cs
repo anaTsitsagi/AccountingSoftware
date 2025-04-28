@@ -42,7 +42,7 @@ namespace AccountingSoftware
             else
             {
                 // fallback to browser language, or "en" if not supported
-                var browserLang = await js.InvokeAsync<string>("navigator.language");
+                var browserLang = await js.InvokeAsync<string>("getBrowserLanguage");
                 culture = new CultureInfo(browserLang ?? "en");
             }
 
