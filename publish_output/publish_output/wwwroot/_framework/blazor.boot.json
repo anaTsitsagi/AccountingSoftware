@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AccountingSoftware",
   "resources": {
-    "hash": "sha256-3We2h1yEmH/80HxbxAOOTWMfNdUuqSt3dEVX37hnP8k=",
+    "hash": "sha256-4TkFYI11LsXz6z8PE9u4c+VBDyK7qfWrb4DoljASPqU=",
     "jsModuleNative": {
       "dotnet.native.8.0.11.po7jwcnuw7.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -15,7 +15,7 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
-      "AccountingSoftware.wasm": "sha256-6mfLGCk8v5IFuYlPq2y/zEN8pTW/ls7A+dfGjeH5TUI=",
+      "AccountingSoftware.wasm": "sha256-Nb1TSNG5aRTew648c6LETBfx/+kCZd+6WBv4+42Yl4Q=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-kdfa9qzcdA9tjuwEbSXtHqokOsnAaNiQzlWty8pTsKc=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-yYQpRfSglPFTxQVDZJfsK2pJPxQ22nGLWG3B/ZXcg4I=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-6umOeK1rLxim7iIogrY6oJEfQ+10M4zzVqfElVAmZEY=",
@@ -60,8 +60,11 @@
       "System.wasm": "sha256-UsIFTsNRr1Sw/A0hEbTyYbQo5eHUNmMuOWT6/xaM3TE="
     },
     "satelliteResources": {
-      "en": {
-        "AccountingSoftware.resources.wasm": "sha256-6UScVs5CM2wHEBeAcKTKKhn3k9BsmPcNjdRURAXv+F0="
+      "ka": {
+        "AccountingSoftware.resources.wasm": "sha256-KfuL3xzWmABqwmtzFI5e1cmDU+o4UzvfXC24aCpJaf4="
+      },
+      "ru": {
+        "AccountingSoftware.resources.wasm": "sha256-nvcqS5yoYogj2YjLLE2+6R26F40lLGe7nMypJk1BEBc="
       }
     }
   },
