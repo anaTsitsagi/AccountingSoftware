@@ -916,8 +916,8 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/images\/test5\.png\'\)\] {
-  background-image: url('/images/test5.png');
+.bg-\[url\(\'\/images\/banner\.png\'\)\] {
+  background-image: url('/images/banner.png');
 }
 
 .bg-cover {
