@@ -7,30 +7,46 @@
 <div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
 
     <header class="relative w-full h-screen">
-        <!-- 1) Full-bleed banner -->
-        <div class="absolute inset-0 bg-[url('/images/background.png')] bg-center bg-cover bg-no-repeat"
-             aria-hidden="true">
-        </div>
-
-        <!-- 2) Hero text on the left edge -->
-        <div class="relative z-10 w-full h-full flex">
-            <div class="flex-none    /* no grow, no shrink */
-           w-[25%]  
+        <!-- Desktop banner (md and up) -->
+        <div class="hidden md:block relative w-full h-screen">
+            <div class="absolute inset-0 bg-[url('/images/background.png')] bg-center bg-cover" aria-hidden="true"></div>
+            <!-- 2) Hero text on the left edge -->
+            <div class="relative z-10 w-full h-full flex">
+                <div class="flex-none    /* no grow, no shrink */
+           w-[25%]
            h-full
            flex flex-col justify-center items-start
            pt-8 pl-8 pr-6
            text-gray-900 text-left">
 
-                <h3 class="hidden md:block text-5xl mb-4 leading-tight text-gray-700">
+                    <h3 class="hidden md:block text-5xl mb-4 leading-tight text-gray-700">
+                        @L["HeroTitle"]
+                    </h3>
+
+                    <p class="hidden md:block text-xl mb-8 leading-relaxed text-gray-700">
+                        @L["HeroSubtitle"]
+                    </p>
+
+                    <a href="#services"
+                       class="hidden md:block inline-block bg-accent1 text-white font-medium py-3 px-8 rounded-full hover:bg-accent2 transition duration-200">
+                        @L["ExploreServicesButton"]
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile banner (sm screens) -->
+        <div class="block md:hidden relative w-full h-screen">
+            <div class="absolute inset-0 bg-[url('/images/background-mobile.png')] bg-center bg-cover" aria-hidden="true"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+                <h3 class="text-3xl font-extrabold text-white leading-snug drop-shadow-md">
                     @L["HeroTitle"]
                 </h3>
-
-                <p class="hidden md:block text-xl mb-8 leading-relaxed text-gray-700">
+                <p class="text-base font-semibold text-white mt-2 drop-shadow-md">
                     @L["HeroSubtitle"]
                 </p>
-
                 <a href="#services"
-                   class="hidden md:block inline-block bg-accent1 text-white font-medium py-3 px-8 rounded-full hover:bg-accent2 transition duration-200">
+                   class="mt-4 bg-accent1 text-white py-2 px-4 rounded-full text-sm font-medium drop-shadow-sm">
                     @L["ExploreServicesButton"]
                 </a>
             </div>
