@@ -16,10 +16,10 @@
 
   <!-- Hero Section -->
   <data name="HeroTitle" xml:space="preserve">
-    <value>Empowering Your Vision</value>
+    <value>Empowering&#x0D;&#x0A;Your Vision</value>
   </data>
   <data name="HeroSubtitle" xml:space="preserve">
-    <value>Tech-driven solutions to scale your business</value>
+    <value>Tech-driven solutions&#x0D;&#x0A;to scale your business</value>
   </data>
   <data name="ExploreServicesButton" xml:space="preserve">
     <value>Explore Our Services</value>

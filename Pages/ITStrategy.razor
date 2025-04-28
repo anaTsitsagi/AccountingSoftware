@@ -1,25 +1,28 @@
 ﻿@page "/services/it-strategy"
 @inject NavigationManager Nav
 
-<div class="max-w-4xl mx-auto mt-20 mb-16 px-6">
+<div class="max-w-4xl mx-auto mb-16 px-6 pt-32">
+    <!-- Back button -->
     <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
                hover:bg-accent1 hover:text-white transition"
             @onclick="GoBack">
-        ← Back
+        ← Back
     </button>
 
+    <!-- Page title -->
     <h1 class="text-3xl font-bold mb-4">IT Strategy</h1>
 
     <!-- New Intro Description -->
     <div class="mb-8">
         <h2 class="text-xl font-semibold mb-2">When do you need this service?</h2>
         <ul class="list-disc list-inside text-gray-700 space-y-1 text-lg">
-            <li>You would like to create software, but you don't know how much it might cost.</li>
-            <li>You have a business idea, but need help to transform it into technical requirements.</li>
-            <li>You need to find the best technical tools for your business idea.</li>
+            <li>You're planning custom software but need accurate cost estimates before committing.</li>
+            <li>You have a business idea and need to translate it into precise technical requirements.</li>
+            <li>You want expert guidance on choosing the optimal tech stack and toolset.</li>
         </ul>
     </div>
 
+    <!-- Accordion of steps -->
     <div class="space-y-4">
         @foreach (var (step, idx) in Steps.Select((s, i) => (s, i)))
         {
@@ -28,6 +31,7 @@
                 <button class="w-full flex items-center justify-between px-4 py-3 bg-gray-100 hover:bg-gray-200 transition"
                         @onclick="() => Toggle(step)">
                     <div class="flex items-center space-x-3">
+                        <!-- Step number badge -->
                         <div class="flex items-center justify-center w-8 h-8 rounded-full bg-accent1 text-white font-bold">
                             @num
                         </div>
@@ -42,8 +46,13 @@
 
                 @if (step.IsExpanded)
                 {
-                    <div class="px-4 py-3 bg-white">
-                        @step.Description
+                    <div class="px-6 py-4 bg-white">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-base">
+                            @foreach (var detail in step.Details)
+                            {
+                                <li>@detail</li>
+                            }
+                        </ul>
                     </div>
                 }
             </div>
@@ -57,27 +66,51 @@
     class Step
     {
         public string Title { get; set; }
-        public string Description { get; set; }
+        public List<string> Details { get; set; }
         public bool IsExpanded { get; set; }
     }
 
     List<Step> Steps = new()
     {
         new Step {
-            Title = "Listening in detail to understand your business need.",
-            Description = "We ask the right questions and dig into your processes so we can tailor our recommendations perfectly to your goals."
+            Title = "Listening in detail to understand your business need",
+            Details = new()
+            {
+                "Conduct stakeholder interviews to uncover key pain-points and objectives",
+                "Map out existing workflows and data-flows to identify gaps",
+                "Clarify success metrics and technical constraints upfront",
+                "Align on project scope, timeline, and regulatory requirements"
+            }
         },
         new Step {
-            Title = "Identifying your budgeting options.",
-            Description = "We review your financial parameters and explore different funding or cost‑allocation strategies to fit your budget."
+            Title = "Identifying your budgeting options",
+            Details = new()
+            {
+                "Break down costs by development phases, licensing, and maintenance",
+                "Explore various delivery models: fixed-price, time-and-materials, hybrid",
+                "Compare on-premise vs. cloud hosting expense profiles",
+                "Perform ROI analysis and total cost of ownership (TCO) projections"
+            }
         },
         new Step {
-            Title = "Creating multiple IT strategic solutions for your needs.",
-            Description = "Leveraging our expertise, we craft several strategic roadmaps—each with its pros, cons, and cost estimates—so you have real choices."
+            Title = "Creating multiple IT strategic solutions for your needs",
+            Details = new()
+            {
+                "Draft alternative architectures: microservices vs. monolith, SaaS vs. custom",
+                "Specify recommended tech stacks (frontend, backend, data storage)",
+                "Assess scalability, security, and compliance implications of each option",
+                "Provide high-level timelines and resource plans per scenario"
+            }
         },
         new Step {
-            Title = "Going through each option with you and identifying the best fit for you.",
-            Description = "We walk you through the trade‑offs, answer all your questions, and help you pick the strategy that delivers the most value."
+            Title = "Reviewing each option together and selecting the best fit",
+            Details = new()
+            {
+                "Walk through pros, cons, and risk factors for every strategy",
+                "Answer questions and refine assumptions in real time",
+                "Prioritize features against budget and timeline constraints",
+                "Finalize a clear, actionable roadmap with defined milestones"
+            }
         },
     };
 

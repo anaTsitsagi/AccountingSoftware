@@ -1,12 +1,12 @@
 ﻿@page "/services/solution-design"
 @inject NavigationManager Nav
 
-<div class="max-w-4xl mx-auto mt-20 mb-16 px-6">
+<div class="max-w-4xl mx-auto mb-16 px-6 pt-32">
     <!-- Back button -->
     <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
                hover:bg-accent1 hover:text-white transition"
             @onclick="GoBack">
-        ← Back
+        ← Back
     </button>
 
     <!-- Page title -->
@@ -36,8 +36,13 @@
 
                 @if (step.IsExpanded)
                 {
-                    <div class="px-4 py-3 bg-white">
-                        @step.Description
+                    <div class="px-6 py-4 bg-white">
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
+                            @foreach (var detail in step.Details)
+                            {
+                                <li>@detail</li>
+                            }
+                        </ul>
                     </div>
                 }
             </div>
@@ -51,31 +56,61 @@
     class Step
     {
         public string Title { get; set; }
-        public string Description { get; set; }
+        public List<string> Details { get; set; }
         public bool IsExpanded { get; set; }
     }
 
     List<Step> Steps = new()
     {
         new Step {
-            Title = "You come to us with your business idea and IT‑strategy insights.",
-            Description = "You already have a clear business concept and an understanding of your overarching IT strategy, so we jump straight into design."
+            Title = "You come to us with your business idea and IT-strategy insights.",
+            Details = new()
+            {
+                "Review your high-level strategy to align technical scope with business goals",
+                "Gather existing documentation, user personas, and success metrics",
+                "Host a kickoff workshop with stakeholders to clarify assumptions",
+                "Define project constraints: budget, timeline, compliance requirements"
+            }
         },
         new Step {
             Title = "We analyze every module and write a technical description.",
-            Description = "Our team breaks down your idea into discrete modules and produces detailed technical specifications for each component."
+            Details = new()
+            {
+                "Break down the solution into functional domains and microservices",
+                "Draft data models, API contracts, and user-flow diagrams",
+                "Specify tech stack choices (frontend, backend, database, messaging)",
+                "Document non-functional requirements: performance, security, scalability"
+            }
         },
         new Step {
             Title = "We create a delivery pipeline.",
-            Description = "We architect and configure a robust CI/CD delivery pipeline to streamline development, testing, and deployment."
+            Details = new()
+            {
+                "Design CI/CD workflows for build, test, and deployment stages",
+                "Integrate static code analysis, unit testing, and security scans",
+                "Configure artifact repositories and container registries",
+                "Set up automated rollback and monitoring hooks"
+            }
         },
         new Step {
             Title = "We define every single task needed for the final result.",
-            Description = "All work items are broken out, prioritized, and structured so your implementation team knows exactly what to build and in what order."
+            Details = new()
+            {
+                "Translate technical specs into actionable user stories or tasks",
+                "Estimate effort and assign priority (MoSCoW / story points)",
+                "Organize tasks into sprints or milestones",
+                "Prepare acceptance criteria and test scenarios for each item"
+            }
         },
         new Step {
             Title = "We hand off all designs in your tool of choice (Jira, Trello, Azure DevOps, etc.).",
-            Description = "Whether you prefer Jira boards, Trello cards, or Azure DevOps, we deliver fully‑populated project artifacts so you can hit the ground running."
+            Details = new()
+            {
+                "Populate boards with epics, stories, and sub-tasks",
+                "Attach wireframes, sequence diagrams, and API spec docs",
+                "Configure workflows, labels, swimlanes, and permission schemes",
+                "Ensure handoff includes a walkthrough and knowledge-transfer session"
+            }
         },
     };
 
