@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- Microsoft ResX Schema -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Hero Section -->
+  <data name="HeroTitle" xml:space="preserve">
+    <value>Empowering Your Vision</value>
+  </data>
+  <data name="HeroSubtitle" xml:space="preserve">
+    <value>Tech-driven solutions to scale your business</value>
+  </data>
+  <data name="ExploreServicesButton" xml:space="preserve">
+    <value>Explore Our Services</value>
+  </data>
+
+  <!-- Services Grid -->
+  <data name="OurServicesHeading" xml:space="preserve">
+    <value>Our Services</value>
+  </data>
+
+  <!-- Service 1 -->
+  <data name="Service1_Title" xml:space="preserve">
+    <value>IT Strategy</value>
+  </data>
+  <data name="Service1_Description" xml:space="preserve">
+    <value>In‑depth understanding of your business needs, aligned to budget</value>
+  </data>
+  <data name="Service1_BackText" xml:space="preserve">
+    <value>We’ll define &amp; compare multiple tailored IT strategies so you can choose the best fit.</value>
+  </data>
+  <data name="Service1_Link" xml:space="preserve">
+    <value>/services/it-strategy</value>
+  </data>
+
+  <!-- Service 2 -->
+  <data name="Service2_Title" xml:space="preserve">
+    <value>Solution Design</value>
+  </data>
+  <data name="Service2_Description" xml:space="preserve">
+    <value>You bring a clear business idea and strategy; we analyze modules, write technical specs, build a delivery pipeline, define all tasks, and share plans via Jira, Trello, or Azure DevOps.</value>
+  </data>
+  <data name="Service2_BackText" xml:space="preserve">
+    <value>From modules to milestones—get a complete, transparent plan ready for development.</value>
+  </data>
+  <data name="Service2_Link" xml:space="preserve">
+    <value>/services/solution-design</value>
+  </data>
+
+  <!-- Service 3 -->
+  <data name="Service3_Title" xml:space="preserve">
+    <value>Software Development</value>
+  </data>
+  <data name="Service3_Description" xml:space="preserve">
+    <value>Build desktop applications, scalable backend services, modern web &amp; cross‑platform mobile apps, integrate existing software, implement cloud services, and apply AI where beneficial.</value>
+  </data>
+  <data name="Service3_BackText" xml:space="preserve">
+    <value>Full‑stack, end‑to‑end development tailored to your needs, with seamless integration &amp; scaling.</value>
+  </data>
+  <data name="Service3_Link" xml:space="preserve">
+    <value>/services/e2e-development</value>
+  </data>
+
+  <!-- Service 4 -->
+  <data name="Service4_Title" xml:space="preserve">
+    <value>Support &amp; Future Plan</value>
+  </data>
+  <data name="Service4_Description" xml:space="preserve">
+    <value>Ongoing support for all delivered apps, four levels of service, on‑demand solution reviews, and updated designs with implementation roadmaps.</value>
+  </data>
+  <data name="Service4_BackText" xml:space="preserve">
+    <value>Keep your systems running smoothly and evolve with confidence using our flexible support tiers.</value>
+  </data>
+  <data name="Service4_Link" xml:space="preserve">
+    <value>/services/support</value>
+  </data>
+
+  <!-- About Section -->
+  <data name="AboutSection_Title" xml:space="preserve">
+    <value>About Logyx.tech</value>
+  </data>
+  <data name="AboutParagraph1" xml:space="preserve">
+    <value>At Logyx.tech, we’re passionate about turning your vision into reality. With years of experience in IT strategy, solution design, and end‑to‑end development, our team partners with you to craft tailored software solutions that scale.</value>
+  </data>
+  <data name="AboutParagraph2" xml:space="preserve">
+    <value>From the initial brainstorming session to long‑term support and future planning, we’re with you every step of the way—bringing clarity to complexity and innovation to every project.</value>
+  </data>
+  <data name="GetInTouchButton" xml:space="preserve">
+    <value>Get in Touch</value>
+  </data>
+
+  <!-- Our Team -->
+  <data name="OurTeamHeading" xml:space="preserve">
+    <value>Our Team</value>
+  </data>
+  <data name="TeamMember1_Name" xml:space="preserve">
+    <value>Alice Smith</value>
+  </data>
+  <data name="TeamMember1_Description" xml:space="preserve">
+    <value>Lead Developer with 10+ years of experience crafting scalable .NET and Blazor applications.</value>
+  </data>
+  <data name="TeamMember2_Name" xml:space="preserve">
+    <value>Bob Johnson</value>
+  </data>
+  <data name="TeamMember2_Description" xml:space="preserve">
+    <value>Project Manager who keeps everything on track, coordinating between stakeholders and dev teams.</value>
+  </data>
+  <data name="TeamMember3_Name" xml:space="preserve">
+    <value>Carol Lee</value>
+  </data>
+  <data name="TeamMember3_Description" xml:space="preserve">
+    <value>UX/UI Designer focused on creating intuitive and accessible interfaces that delight users.</value>
+  </data>
+  <data name="TeamMember4_Name" xml:space="preserve">
+    <value>David Kim</value>
+  </data>
+  <data name="TeamMember4_Description" xml:space="preserve">
+    <value>Cloud Architect and DevOps specialist, ensuring your solutions are robust and production‑ready.</value>
+  </data>
+  <data name="TeamMember5_Name" xml:space="preserve">
+    <value>Eva García</value>
+  </data>
+  <data name="TeamMember5_Description" xml:space="preserve">
+    <value>AI/ML Engineer bringing intelligent automation and data‑driven insights into every project.</value>
+  </data>
+  <data name="TeamMember6_Name" xml:space="preserve">
+    <value>Frank Müller</value>
+  </data>
+  <data name="TeamMember6_Description" xml:space="preserve">
+    <value>Quality Assurance lead, passionate about delivering bug‑free and high‑performance software.</value>
+  </data>
+
+  <!-- Contact Section -->
+  <data name="ContactSection_Title" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="ThankYouMessage" xml:space="preserve">
+    <value>Thanks for reaching out! We’ll be in touch soon.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="EmailLabel" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SubjectLabel" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>Send</value>
+  </data>
+
+  <!-- Validation Messages -->
+  <data name="Validation_NameRequired" xml:space="preserve">
+    <value>Name is required.</value>
+  </data>
+  <data name="Validation_EmailRequired" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Validation_EmailInvalid" xml:space="preserve">
+    <value>Invalid email address.</value>
+  </data>
+  <data name="Validation_MessageRequired" xml:space="preserve">
+    <value>Please enter a message.</value>
+  </data>
+</root>

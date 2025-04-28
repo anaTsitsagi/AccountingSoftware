@@ -15,6 +15,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Pages\Index.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Target Name="Tailwind:Install" AfterTargets="AfterBuild">
     <Message Importance="high" Text="Installing Tailwind CLI" />
     <DownloadFile SkipUnchangedFiles="true" DestinationFolder="$(MSBuildProjectDirectory)" SourceUrl="https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.1/tailwindcss-windows-x64.exe" Condition="($([MSBuild]::IsOSPlatform('Windows')) AND '$([System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture)' == 'X64')">

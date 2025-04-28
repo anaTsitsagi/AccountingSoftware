@@ -2,7 +2,7 @@
 @using AccountingSoftware.Shared
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.Extensions.Localization
-@inject Microsoft.Extensions.Localization.IStringLocalizer<Pages.Index> L
+@inject IStringLocalizer<Index> L
 
 <div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
 
@@ -21,18 +21,16 @@
                text-gray-900 text-left">
 
                 <h3 class="hidden md:block text-5xl mb-4 leading-tight text-gray-700">
-                    Empowering<br />
-                    Your Vision
+                    @L["HeroTitle"]
                 </h3>
 
                 <p class="hidden md:block text-xl mb-8 leading-relaxed text-gray-700">
-                    Tech-driven solutions<br />
-                    to scale your business
+                    @L["HeroSubtitle"]
                 </p>
 
                 <a href="#services"
                    class="hidden md:block inline-block bg-accent1 text-white font-medium py-3 px-8 rounded-full hover:bg-accent2 transition duration-200">
-                    Explore Our Services
+                    @L["ExploreServicesButton"]
                 </a>
             </div>
         </div>
@@ -40,32 +38,32 @@
 
     <!-- Services Grid -->
     <main id="services" class="py-16 px-6 bg-background">
-        <h2 class="text-3xl font-semibold text-center mb-12">Our Services</h2>
+        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
             <ServiceCard Icon="bi-compass"
-                         Title="IT Strategy"
-                         Description="In‑depth understanding of your business needs, aligned to budget"
-                         BackText="We’ll define & compare multiple tailored IT strategies so you can choose the best fit."
-                         Link="/services/it-strategy" />
+                         Title="@L["Service1_Title"]"
+                         Description="@L["Service1_Description"]"
+                         BackText="@L["Service1_BackText"]"
+                         Link="@L["Service1_Link"]" />
 
             <ServiceCard Icon="bi-diagram-3"
-                         Title="Solution Design"
-                         Description="You bring a clear business idea and strategy; we analyze modules, write technical specs, build a delivery pipeline, define all tasks, and share plans via Jira, Trello, or Azure DevOps."
-                         BackText="From modules to milestones—get a complete, transparent plan ready for development."
-                         Link="/services/solution-design" />
+                         Title="@L["Service2_Title"]"
+                         Description="@L["Service2_Description"]"
+                         BackText="@L["Service2_BackText"]"
+                         Link="@L["Service2_Link"]" />
 
             <ServiceCard Icon="bi-cpu"
-                         Title="Software Development"
-                         Description="Build desktop applications, scalable backend services, modern web & cross‑platform mobile apps, integrate existing software, implement cloud services, and apply AI where beneficial."
-                         BackText="Full‑stack, end‑to‑end development tailored to your needs, with seamless integration & scaling."
-                         Link="/services/e2e-development" />
+                         Title="@L["Service3_Title"]"
+                         Description="@L["Service3_Description"]"
+                         BackText="@L["Service3_BackText"]"
+                         Link="@L["Service3_Link"]" />
 
             <ServiceCard Icon="bi-tools"
-                         Title="Support & Future Plan"
-                         Description="Ongoing support for all delivered apps, four levels of service, on‑demand solution reviews, and updated designs with implementation roadmaps."
-                         BackText="Keep your systems running smoothly and evolve with confidence using our flexible support tiers."
-                         Link="/services/support" />
+                         Title="@L["Service4_Title"]"
+                         Description="@L["Service4_Description"]"
+                         BackText="@L["Service4_BackText"]"
+                         Link="@L["Service4_Link"]" />
         </div>
     </main>
 
@@ -76,142 +74,121 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <img src="/images/about-illustration.png"
-                         alt="About us illustration"
+                         alt="@L["AboutSection_Title"] illustration"
                          class="w-full rounded-xl shadow-md" />
                 </div>
                 <div>
-                    <h2 class="text-3xl font-bold mb-4">About Logyx.tech</h2>
+                    <h2 class="text-3xl font-bold mb-4">@L["AboutSection_Title"]</h2>
                     <p class="mb-4 text-gray-700 leading-relaxed">
-                        At Logyx.tech, we’re passionate about turning your vision into reality.
-                        With years of experience in IT strategy, solution design, and end‑to‑end development,
-                        our team partners with you to craft tailored software solutions that scale.
+                        @L["AboutParagraph1"]
                     </p>
                     <p class="mb-6 text-gray-700 leading-relaxed">
-                        From the initial brainstorming session to long‑term support and future planning,
-                        we’re with you every step of the way—bringing clarity to complexity and
-                        innovation to every project.
+                        @L["AboutParagraph2"]
                     </p>
                     <a href="#contact"
-                       class="inline-block bg-accent1 text-white font-medium py-2 px-6 rounded-full
-                 hover:bg-accent2 transition duration-200">
-                        Get in Touch
+                       class="inline-block bg-accent1 text-white font-medium py-2 px-6 rounded-full hover:bg-accent2 transition duration-200">
+                        @L["GetInTouchButton"]
                     </a>
                 </div>
             </div>
 
             <!-- Our Team -->
             <div>
-                <h3 class="text-2xl font-semibold mb-6">Our Team</h3>
+                <h3 class="text-2xl font-semibold mb-6">@L["OurTeamHeading"]</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div>
-                        <h4 class="text-xl font-medium mb-1">Alice Smith</h4>
-                        <p class="text-gray-700">Lead Developer with 10+ years of experience crafting scalable .NET and Blazor applications.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember1_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember1_Description"]</p>
                     </div>
                     <div>
-                        <h4 class="text-xl font-medium mb-1">Bob Johnson</h4>
-                        <p class="text-gray-700">Project Manager who keeps everything on track, coordinating between stakeholders and dev teams.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember2_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember2_Description"]</p>
                     </div>
                     <div>
-                        <h4 class="text-xl font-medium mb-1">Carol Lee</h4>
-                        <p class="text-gray-700">UX/UI Designer focused on creating intuitive and accessible interfaces that delight users.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember3_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember3_Description"]</p>
                     </div>
                     <div>
-                        <h4 class="text-xl font-medium mb-1">David Kim</h4>
-                        <p class="text-gray-700">Cloud Architect and DevOps specialist, ensuring your solutions are robust and production‑ready.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember4_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember4_Description"]</p>
                     </div>
                     <div>
-                        <h4 class="text-xl font-medium mb-1">Eva García</h4>
-                        <p class="text-gray-700">AI/ML Engineer bringing intelligent automation and data‑driven insights into every project.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember5_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember5_Description"]</p>
                     </div>
                     <div>
-                        <h4 class="text-xl font-medium mb-1">Frank Müller</h4>
-                        <p class="text-gray-700">Quality Assurance lead, passionate about delivering bug‑free and high‑performance software.</p>
+                        <h4 class="text-xl font-medium mb-1">@L["TeamMember6_Name"]</h4>
+                        <p class="text-gray-700">@L["TeamMember6_Description"]</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- Contact Section -->
     <section id="contact" class="py-12 bg-background">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl font-semibold text-center mb-8">Contact Us</h2>
+            <h2 class="text-2xl font-semibold text-center mb-8">@L["ContactSection_Title"]</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Left: Map embed for Tbilisi, Georgia -->
-                <div class="w-full h-80 rounded-lg overflow-hidden shadow-md">
-                    <iframe src="https://maps.google.com/maps?q=Tbilisi%2C%20Georgia&z=13&output=embed"
-                            class="w-full h-full border-0"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+            @if (contactSubmitted)
+            {
+                <div class="bg-green-100 border border-green-300 text-green-800 p-4 rounded mb-6">
+                    @L["ThankYouMessage"]
+                </div>
+            }
+
+            <EditForm Model="contactModel" OnValidSubmit="HandleContactSubmit" class="space-y-4">
+                <DataAnnotationsValidator />
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">@L["NameLabel"]</label>
+                        <InputText @bind-Value="contactModel.Name"
+                                   class="w-full border rounded p-2 text-sm"
+                                   placeholder="@L["NameLabel"]" />
+                        <ValidationMessage For="@(() => contactModel.Name)"
+                                           class="text-red-600 text-xs mt-1" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">@L["EmailLabel"]</label>
+                        <InputText @bind-Value="contactModel.Email"
+                                   type="email"
+                                   class="w-full border rounded p-2 text-sm"
+                                   placeholder="@L["EmailLabel"]" />
+                        <ValidationMessage For="@(() => contactModel.Email)"
+                                           class="text-red-600 text-xs mt-1" />
+                    </div>
                 </div>
 
-                <!-- Right: Contact form (unchanged) -->
                 <div>
-                    @if (contactSubmitted)
-                    {
-                        <div class="bg-green-100 border border-green-300 text-green-800 p-4 rounded mb-6">
-                            Thanks for reaching out! We’ll be in touch soon.
-                        </div>
-                    }
-
-                    <EditForm Model="contactModel" OnValidSubmit="HandleContactSubmit" class="space-y-4">
-                        <DataAnnotationsValidator />
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium mb-1">Name</label>
-                                <InputText @bind-Value="contactModel.Name"
-                                           class="w-full border rounded p-2 text-sm"
-                                           placeholder="Your name" />
-                                <ValidationMessage For="@(() => contactModel.Name)"
-                                                   class="text-red-600 text-xs mt-1" />
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium mb-1">Email</label>
-                                <InputText @bind-Value="contactModel.Email"
-                                           type="email"
-                                           class="w-full border rounded p-2 text-sm"
-                                           placeholder="you@example.com" />
-                                <ValidationMessage For="@(() => contactModel.Email)"
-                                                   class="text-red-600 text-xs mt-1" />
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Subject</label>
-                            <InputText @bind-Value="contactModel.Subject"
-                                       class="w-full border rounded p-2 text-sm"
-                                       placeholder="Subject (optional)" />
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium mb-1">Message</label>
-                            <InputTextArea @bind-Value="contactModel.Message"
-                                           rows="4"
-                                           class="w-full border rounded p-2 text-sm"
-                                           placeholder="Your message…" />
-                            <ValidationMessage For="@(() => contactModel.Message)"
-                                               class="text-red-600 text-xs mt-1" />
-                        </div>
-
-                        <div class="text-right">
-                            <button type="submit"
-                                    class="bg-accent1 text-white text-sm font-medium py-2 px-6 rounded hover:bg-accent2 transition">
-                                Send
-                            </button>
-                        </div>
-                    </EditForm>
+                    <label class="block text-sm font-medium mb-1">@L["SubjectLabel"]</label>
+                    <InputText @bind-Value="contactModel.Subject"
+                               class="w-full border rounded p-2 text-sm"
+                               placeholder="@L["SubjectLabel"]" />
                 </div>
-            </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">@L["MessageLabel"]</label>
+                    <InputTextArea @bind-Value="contactModel.Message"
+                                   rows="4"
+                                   class="w-full border rounded p-2 text-sm"
+                                   placeholder="@L["MessageLabel"]" />
+                    <ValidationMessage For="@(() => contactModel.Message)"
+                                       class="text-red-600 text-xs mt-1" />
+                </div>
+
+                <div class="text-right">
+                    <button type="submit"
+                            class="bg-accent1 text-white text-sm font-medium py-2 px-6 rounded hover:bg-accent2 transition">
+                        @L["SendButton"]
+                    </button>
+                </div>
+            </EditForm>
         </div>
     </section>
 
-
 </div>
+
 @code {
     bool contactSubmitted;
     ContactModel contactModel = new();
@@ -220,21 +197,21 @@
     {
         // TODO: wire up API / email send here
         contactSubmitted = true;
-        contactModel = new(); // reset form
+        contactModel = new();
     }
 
     class ContactModel
     {
-        [Required(ErrorMessage = "Name is required.")]
+        [Required(ErrorMessageResourceName = "Validation_NameRequired", ErrorMessageResourceType = typeof(Pages.Index))]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [Required(ErrorMessageResourceName = "Validation_EmailRequired", ErrorMessageResourceType = typeof(Pages.Index))]
+        [EmailAddress(ErrorMessageResourceName = "Validation_EmailInvalid", ErrorMessageResourceType = typeof(Pages.Index))]
         public string Email { get; set; }
 
         public string Subject { get; set; }
 
-        [Required(ErrorMessage = "Please enter a message.")]
+        [Required(ErrorMessageResourceName = "Validation_MessageRequired", ErrorMessageResourceType = typeof(Pages.Index))]
         public string Message { get; set; }
     }
 }
