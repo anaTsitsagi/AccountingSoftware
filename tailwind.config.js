@@ -20,7 +20,8 @@ module.exports = {
         accent2:    '#10B981',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+          sans: ['Inter', 'sans-serif'],
+          space: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui'],
       }
     }
   },

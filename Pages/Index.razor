@@ -2,62 +2,39 @@
 @using AccountingSoftware.Shared
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.Extensions.Localization
+@using System.Globalization;
 @inject IStringLocalizer<Index> L
+@inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
-
-    <header class="relative w-full h-screen">
-        <!-- Desktop banner (md and up) -->
-        <div class="hidden md:block relative w-full h-screen">
-            <div class="absolute inset-0 bg-[url('/images/background.png')] bg-center bg-cover" aria-hidden="true"></div>
-            <!-- 2) Hero text on the left edge -->
-            <div class="relative z-10 w-full h-full flex">
-                <div class="flex-none    /* no grow, no shrink */
-           w-[25%]
-           h-full
-           flex flex-col justify-center items-start
-           pt-8 pl-8 pr-6
-           text-gray-900 text-left">
-
-                    <h3 class="hidden md:block text-5xl mb-4 leading-tight text-gray-700">
-                        @L["HeroTitle"]
-                    </h3>
-
-                    <p class="hidden md:block text-xl mb-8 leading-relaxed text-gray-700">
-                        @L["HeroSubtitle"]
-                    </p>
-
-                    <a href="#services"
-                       class="hidden md:block inline-block bg-accent1 text-white font-medium py-3 px-8 rounded-full hover:bg-accent2 transition duration-200">
-                        @L["ExploreServicesButton"]
-                    </a>
-                </div>
-            </div>
+    <header class="relative flex items-center justify-center h-screen pt-20 overflow-hidden">
+        <!-- Vertical gradient with curved bottom -->
+        <div class="absolute inset-0"
+             style="background: linear-gradient(to bottom, #F0EEFF, #DAD4F8);
+           border-radius: 0 0 50% 50% / 0 0 25% 25%;">
         </div>
 
-        <!-- Mobile banner (sm screens) -->
-        <div class="block md:hidden relative w-full h-screen">
-            <div class="absolute inset-0 bg-[url('/images/background-mobile.png')] bg-center bg-cover" aria-hidden="true"></div>
-            <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
-                <h3 class="text-3xl font-extrabold text-white leading-snug drop-shadow-md">
-                    @L["HeroTitle"]
-                </h3>
-                <p class="text-base font-semibold text-white mt-2 drop-shadow-md">
-                    @L["HeroSubtitle"]
-                </p>
-                <a href="#services"
-                   class="mt-4 bg-accent1 text-white py-2 px-4 rounded-full text-sm font-medium drop-shadow-sm">
-                    @L["ExploreServicesButton"]
-                </a>
-            </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-space text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
+                @L["HeroTitle"]
+            </h1>
+            <p class="font-space text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+                @L["HeroSubtitle"]
+            </p>
+            <a href="#services"
+               class="inline-block bg-white text-accent1 font-semibold py-3 px-8 rounded-full hover:bg-gray-100 transition">
+                @L["ExploreServicesButton"]
+            </a>
         </div>
     </header>
 
-    <!-- Services Grid -->
-    <main id="services" class="py-16 px-6 bg-background">
-        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
+
+    <!-- Services Grid -->
+    <main id="services" class="py-20 px-6 bg-background">
+        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <ServiceCard Icon="bi-compass"
                          Title="@L["Service1_Title"]"
                          Description="@L["Service1_Description"]"
@@ -86,80 +63,33 @@
 
     <!-- About Us -->
     <section id="about" class="py-16 px-6 bg-white">
-        <div class="max-w-6xl mx-auto space-y-12">
-            <!-- Intro -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <img src="/images/about-us.jpg"
-                         alt="@L["AboutSection_Title"] illustration"
-                         class="w-full rounded-xl shadow-md" />
-                </div>
-                <div>
-                    <h2 class="text-3xl font-bold mb-4">@L["AboutSection_Title"]</h2>
-                    <p class="mb-4 text-gray-700 leading-relaxed">
-                        @L["AboutParagraph1"]
-                    </p>
-                    <p class="mb-6 text-gray-700 leading-relaxed">
-                        @L["AboutParagraph2"]
-                    </p>
-                    <a href="#contact"
-                       class="inline-block bg-accent1 text-white font-medium py-2 px-6 rounded-full hover:bg-accent2 transition duration-200">
-                        @L["GetInTouchButton"]
-                    </a>
-                </div>
-            </div>
-
-            @* <!-- Our Team -->
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <img src="/images/about-us.jpg"
+                 alt="@L["AboutSection_Title"] illustration"
+                 class="w-full rounded-xl shadow-md" />
             <div>
-                <h3 class="text-2xl font-semibold mb-6">@L["OurTeamHeading"]</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember1_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember1_Description"]</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember2_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember2_Description"]</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember3_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember3_Description"]</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember4_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember4_Description"]</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember5_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember5_Description"]</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-medium mb-1">@L["TeamMember6_Name"]</h4>
-                        <p class="text-gray-700">@L["TeamMember6_Description"]</p>
-                    </div>
-                </div>
-            </div> *@
+                <h2 class="text-3xl font-bold mb-4">@L["AboutSection_Title"]</h2>
+                <p class="mb-4 text-gray-700 leading-relaxed">@L["AboutParagraph1"]</p>
+                <p class="mb-6 text-gray-700 leading-relaxed">@L["AboutParagraph2"]</p>
+                <a href="#contact"
+                   class="inline-block bg-accent1 text-white font-medium py-2 px-6 rounded-full hover:bg-accent2 transition">
+                    @L["GetInTouchButton"]
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-12 bg-background">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl font-semibold text-center mb-8">
-                @L["ContactSection_Title"]
-            </h2>
-
+            <h2 class="text-2xl font-semibold text-center mb-8">@L["ContactSection_Title"]</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Map column -->
+                <!-- Map -->
                 <div class="h-80 w-full rounded-lg overflow-hidden shadow-md">
                     <iframe src="https://maps.google.com/maps?q=Tbilisi,Georgia&z=13&output=embed"
-                            class="w-full h-full"
-                            frameborder="0"
-                            allowfullscreen
-                            loading="lazy"></iframe>
+                            class="w-full h-full" frameborder="0" allowfullscreen loading="lazy"></iframe>
                 </div>
-
-                <!-- Form column -->
+                <!-- Form -->
                 <div>
                     @if (contactSubmitted)
                     {
@@ -167,17 +97,12 @@
                             @L["ThankYouMessage"]
                         </div>
                     }
-
-                    <EditForm Model="contactModel"
-                              OnValidSubmit="HandleContactSubmit"
-                              class="space-y-4">
+                    <EditForm Model="contactModel" OnValidSubmit="HandleContactSubmit" class="space-y-4">
                         <DataAnnotationsValidator />
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium mb-1">
-                                    @L["NameLabel"]
-                                </label>
+                                <label class="block text-sm font-medium mb-1">@L["NameLabel"]</label>
                                 <InputText @bind-Value="contactModel.Name"
                                            class="w-full border rounded p-2 text-sm"
                                            placeholder="@L["NameLabel"]" />
@@ -185,9 +110,7 @@
                                                    class="text-red-600 text-xs mt-1" />
                             </div>
                             <div>
-                                <label class="block text-sm font-medium mb-1">
-                                    @L["EmailLabel"]
-                                </label>
+                                <label class="block text-sm font-medium mb-1">@L["EmailLabel"]</label>
                                 <InputText @bind-Value="contactModel.Email"
                                            type="email"
                                            class="w-full border rounded p-2 text-sm"
@@ -198,18 +121,14 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium mb-1">
-                                @L["SubjectLabel"]
-                            </label>
+                            <label class="block text-sm font-medium mb-1">@L["SubjectLabel"]</label>
                             <InputText @bind-Value="contactModel.Subject"
                                        class="w-full border rounded p-2 text-sm"
                                        placeholder="@L["SubjectLabel"]" />
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium mb-1">
-                                @L["MessageLabel"]
-                            </label>
+                            <label class="block text-sm font-medium mb-1">@L["MessageLabel"]</label>
                             <InputTextArea @bind-Value="contactModel.Message"
                                            rows="4"
                                            class="w-full border rounded p-2 text-sm"
@@ -229,17 +148,25 @@
             </div>
         </div>
     </section>
-
-
 </div>
 
 @code {
+    private bool isMenuOpen;
+    void ToggleMenu() => isMenuOpen = !isMenuOpen;
+
+    string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+    async Task ChangeCulture(ChangeEventArgs e)
+    {
+        var culture = e.Value.ToString();
+        await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", culture);
+        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+    }
+
     bool contactSubmitted;
     ContactModel contactModel = new();
 
     void HandleContactSubmit()
     {
-        // TODO: wire up API / email send here
         contactSubmitted = true;
         contactModel = new();
     }
