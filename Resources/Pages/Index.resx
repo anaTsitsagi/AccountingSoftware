@@ -122,7 +122,7 @@
 Your Vision</value>
   </data>
   <data name="HeroSubtitle" xml:space="preserve">
-    <value>Tech-driven solutions
+    <value>Tech-driven solutions 
 to scale your business</value>
   </data>
   <data name="ExploreServicesButton" xml:space="preserve">
@@ -136,8 +136,9 @@ to scale your business</value>
   </data>
   <data name="Service1_Description" xml:space="preserve">
     <value>
-      > In‑depth understanding of your business needs 
-      > alignment to budget
+      > In‑depth understanding of your business needs &#xD;&#xA;
+      > alignment to budget &#xD;&#xA;
+      > Detailed plan of architecture, tools, and processes
     </value>
   </data>
   <data name="Service1_BackText" xml:space="preserve">
@@ -152,10 +153,10 @@ to scale your business</value>
   </data>
   <data name="Service2_Description" xml:space="preserve">
     <value>
-      > You bring a clear business idea and strategy; 
-      > We analyze modules, write technical specs
-      > Build a delivery pipeline, define all tasks
-      > Share plans via Jira, Trello, or Azure DevOps
+      > You bring a clear business idea and strategy &#xD;&#xA;
+      > We analyze modules, write technical specs &#xD;&#xA;
+      > Build a delivery pipeline, define all tasks &#xD;&#xA;
+      > Share plans via Jira, Trello, or Azure DevOps 
     </value>
   </data>
   <data name="Service2_BackText" xml:space="preserve">
@@ -169,11 +170,12 @@ to scale your business</value>
   </data>
   <data name="Service3_Description" xml:space="preserve">
     <value>
-      > Build desktop applications 
-      > scalable backend services, modern web cross‑platform mobile apps 
-      > integrate existing software
-      > implement cloud services 
-      > apply AI
+      > Desktop applications &#xD;&#xA;
+      > scalable backend services &#xD;&#xA;
+      > Mobile apps &#xD;&#xA;
+      > Integrate existing software &#xD;&#xA;
+      > Cloud services &#xD;&#xA;
+      > AI integration
     </value>
   </data>
   <data name="Service3_BackText" xml:space="preserve">
@@ -187,10 +189,10 @@ to scale your business</value>
   </data>
   <data name="Service4_Description" xml:space="preserve">
     <value>
-      > Ongoing support for all delivered apps
-      > four levels of service
-      > on‑demand solution reviews 
-      > updated designs with implementation roadmaps
+      > Ongoing support for all delivered apps &#xD;&#xA;
+      > four levels of service &#xD;&#xA;
+      > on‑demand solution reviews &#xD;&#xA;
+      > updated designs with implementation roadmaps &#xD;&#xA;
     </value>
   </data>
   <data name="Service4_BackText" xml:space="preserve">

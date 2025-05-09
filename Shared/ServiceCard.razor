@@ -5,26 +5,22 @@
 @inject IStringLocalizer<ServiceCard> L
 
 <style>
-    /* 1) Wrapper sets up the perspective */
     .flip-card {
         perspective: 1000px;
     }
 
-    /* 2) Inner preserves 3D & animates */
     .flip-card-inner {
         position: relative;
         width: 100%;
         height: 100%;
-        transform-style: preserve-3d; /* ← VERY important */
+        transform-style: preserve-3d;
         transition: transform 0.6s;
     }
 
-    /* 3) Flip on hover instead of click */
     .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
     }
 
-    /* 4) Both faces fill the space… */
     .flip-card-front,
     .flip-card-back {
         position: absolute;
@@ -32,43 +28,64 @@
         height: 100%;
         top: 0;
         left: 0;
-        /* Hide the reverse side of each face */
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }
 
-    /* 5) Front sits as-is */
     .flip-card-front {
         transform: rotateY(0deg);
     }
 
-    /* 6) Back is pre-rotated 180° so it reads upright once its parent spins */
     .flip-card-back {
         transform: rotateY(180deg);
     }
 </style>
 
-<div class="flip-card w-full h-64">
-    <div class="flip-card-inner">
-        <!-- FRONT FACE -->
-        <div class="flip-card-front bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-200 flex flex-col items-center justify-center">
-            <div class="text-accent1 mb-4 text-3xl">
-                <i class="bi @Icon"></i>
+<div class="flip-card w-full min-h-[28rem] h-auto">
+    <div class="flip-card-inner h-full">
+
+        <!-- FRONT -->
+        <div class="flip-card-front
+            bg-white rounded-2xl p-6
+            shadow-sm hover:shadow-lg transition
+            flex flex-col">
+            <div class="flex justify-center mb-3">
+                <i class="bi @Icon text-accent1 text-3xl"></i>
             </div>
-            <h3 class="text-xl font-semibold mb-2">@Title</h3>
-            <p class="text-sm text-gray-700 text-center">@Description</p>
+            <h3 class="text-xl font-semibold mb-2 text-center">@Title</h3>
+            <p class="text-sm text-gray-700 whitespace-pre-line break-words leading-snug flex-1">
+                @Description
+            </p>
+
+            @* Tags with violet border aligned right *@
+            @if (Tags?.Any() == true)
+            {
+                <div class="mt-4 flex flex-wrap gap-1 justify-end">
+                    @foreach (var tag in Tags)
+                    {
+                        <span class="bg-white text-accent1 border border-accent1 text-xs font-medium px-2 py-1 rounded-full">
+                            @tag
+                        </span>
+                    }
+                </div>
+            }
         </div>
 
-        <!-- BACK FACE -->
-        <div class="flip-card-back bg-accent1 text-white rounded-2xl p-6 flex flex-col items-center justify-center">
-            <h3 class="text-2xl font-bold mb-4">@L["LearnMoreHeading"]</h3>
-            <p class="text-center mb-6">@BackText</p>
-            <button class="bg-white text-accent1 font-medium py-2 px-4 rounded-full hover:bg-gray-100 transition duration-200"
+        <!-- BACK -->
+        <div class="flip-card-back
+            bg-accent1 text-white rounded-2xl p-6
+            flex flex-col">
+            <h3 class="text-xl font-bold mb-2 text-center">@L["LearnMoreHeading"]</h3>
+            <p class="text-sm whitespace-pre-line break-words leading-snug flex-1 mb-4">
+                @BackText
+            </p>
+            <button class="mt-auto bg-white text-accent1 text-sm font-medium py-2 px-4 rounded-full hover:bg-gray-100 transition"
                     @onclick:stopPropagation="true"
                     @onclick="() => NavManager.NavigateTo(Link)">
                 @L["GoToDetailsButton"]
             </button>
         </div>
+
     </div>
 </div>
 
@@ -78,4 +95,9 @@
     [Parameter] public string Description { get; set; }
     [Parameter] public string BackText { get; set; }
     [Parameter] public string Link { get; set; }
+
+    /// <summary>
+    /// Optional list of tags to show under the description on the front face.
+    /// </summary>
+    [Parameter] public IEnumerable<string> Tags { get; set; } = Enumerable.Empty<string>();
 }

@@ -95,60 +95,47 @@
 
     <!-- Services Grid -->
     <main id="services" class="py-20 px-6 bg-background">
-        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <h2 class="text-3xl font-semibold text-center mb-12">
+            @L["OurServicesHeading"]
+        </h2>
+
+        <div class="max-w-screen-xl mx-auto
+           grid grid-cols-1
+                sm:grid-cols-2
+                xl:grid-cols-4
+           gap-2">
             <ServiceCard Icon="bi-compass"
                          Title="@L["Service1_Title"]"
                          Description="@L["Service1_Description"]"
                          BackText="@L["Service1_BackText"]"
-                         Link="@L["Service1_Link"]" />
-
+                         Link="@L["Service1_Link"]"
+                         Tags="@(new[] { "BUDGET", "TOOLS", "ARCHITECTURE" })" />
             <ServiceCard Icon="bi-diagram-3"
                          Title="@L["Service2_Title"]"
                          Description="@L["Service2_Description"]"
                          BackText="@L["Service2_BackText"]"
-                         Link="@L["Service2_Link"]" />
+                         Link="@L["Service2_Link"]"
+                         Tags="@(new[] { "PLAN", "DESIGN", "SOLUTION", "COLLABORATION", "AGREEMENT" })"/>
 
             <ServiceCard Icon="bi-cpu"
                          Title="@L["Service3_Title"]"
                          Description="@L["Service3_Description"]"
                          BackText="@L["Service3_BackText"]"
-                         Link="@L["Service3_Link"]" />
+                         Link="@L["Service3_Link"]" 
+                         Tags="@(new[] { "DESKTOP", "API", "WEB", "MOBILE", "AI","CLOUD","INTEGRATION" })" />
 
             <ServiceCard Icon="bi-tools"
                          Title="@L["Service4_Title"]"
                          Description="@L["Service4_Description"]"
                          BackText="@L["Service4_BackText"]"
-                         Link="@L["Service4_Link"]" />
+                         Link="@L["Service4_Link"]" 
+                         Tags="@(new[] { "SUPPORT", "4 LAYERS", "L1 SUPPORT", "L2 SUPPORT", "L3 SUPPORT","REDESIGN" })" />
         </div>
     </main>
 
-@*     <main id="services" class="py-20 px-6 bg-background">
-        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
-        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            @foreach (var svc in Services)
-            {
-                <div class="service-card fade-in-up bg-white p-6 rounded-lg shadow hover:shadow-lg">
-                    <div class="text-accent1 text-4xl mb-4"><i class="bi @svc.Icon"></i></div>
-                    <h3 class="text-xl font-semibold mb-2">@svc.Title</h3>
-                    <ul class="list-disc list-inside text-gray-600 mb-4">
-                        @foreach (var pt in svc.Points)
-                        {
-                            <li>@pt</li>
-                        }
-                    </ul>
-                    <a href="@svc.Link" class="text-accent1 font-medium hover:underline">
-                        @L["LearnMore"]
-                    </a>
-                </div>
-            }
-        </div>
-    </main> *@
-
-
     <!-- About Us -->
     <section id="about" class="py-16 px-6 bg-white">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <img src="/images/about-us.jpg"
                  alt="@L["AboutSection_Title"] illustration"
                  class="w-full rounded-xl shadow-md" />
@@ -166,7 +153,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-12 bg-background">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-screen-xl mx-auto px-6">
             <h2 class="text-2xl font-semibold text-center mb-8">@L["ContactSection_Title"]</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Map -->
@@ -235,60 +222,6 @@
     </section>
 </div>
 @code {
-    record Service(string Icon, string Title, List<string> Points, string Link);
-    List<Service> Services;
-
-    protected override void OnInitialized()
-    {
-        Services = new List<Service>
-        {
-            new(
-                "bi-compass",
-                L["Service1_Title"],
-                new List<string>
-                {
-                    L["Service1_Point1"],
-                    L["Service1_Point2"],
-                    L["Service1_Point3"]
-                },
-                L["Service1_Link"]
-            ),
-            new(
-                "bi-diagram-3",
-                L["Service2_Title"],
-                new List<string>
-                {
-                    L["Service2_Point1"],
-                    L["Service2_Point2"],
-                    L["Service2_Point3"]
-                },
-                L["Service2_Link"]
-            ),
-            new(
-                "bi-cpu",
-                L["Service3_Title"],
-                new List<string>
-                {
-                    L["Service3_Point1"],
-                    L["Service3_Point2"],
-                    L["Service3_Point3"]
-                },
-                L["Service3_Link"]
-            ),
-            new(
-                "bi-tools",
-                L["Service4_Title"],
-                new List<string>
-                {
-                    L["Service4_Point1"],
-                    L["Service4_Point2"],
-                    L["Service4_Point3"]
-                },
-                L["Service4_Link"]
-            )
-        };
-    }
-
 
     bool isMenuOpen;
     void ToggleMenu() => isMenuOpen = !isMenuOpen;
