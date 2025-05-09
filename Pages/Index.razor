@@ -7,28 +7,90 @@
 @inject IJSRuntime JS
 @inject NavigationManager Nav
 
-<div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
-    <header class="relative flex items-center justify-center h-screen pt-20 overflow-hidden">
-        <!-- Vertical gradient with curved bottom -->
-        <div class="absolute inset-0"
-             style="background: linear-gradient(to bottom, #F0EEFF, #DAD4F8);
-           border-radius: 0 0 50% 50% / 0 0 25% 25%;">
-        </div>
+<style>
+    /* Typography hierarchy */
+    .hero h1 {
+        line-height: 1.2;
+        font-weight: 800;
+    }
 
-        <div class="relative z-10 text-center px-4">
-            <h1 class="font-space text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
+    .hero p {
+        max-width: 40ch;
+        margin: 0 auto;
+    }
+
+    main p, section p {
+        font-size: 1.0625rem;
+        line-height: 1.6;
+    }
+
+    /* Plain background for hero (no gradients/shadows) */
+    .hero {
+        background-color: #f0eeff;
+        position: relative;
+    }
+
+        /* Remove pattern overlay entirely */
+        .hero::before {
+            display: none;
+        }
+
+    /* Fade-in-up keyframes */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out both;
+    }
+
+    /* ServiceCard hover 3D effect */
+    .service-card {
+        transition: transform .3s, box-shadow .3s;
+    }
+
+        .service-card:hover {
+            transform: perspective(500px) translateZ(8px) rotateY(3deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+</style>
+
+<div class="flex flex-col min-h-screen bg-background text-text font-sans antialiased">
+    <!-- Hero: now a flat background, limited content width -->
+    <header class="hero flex flex-col items-center justify-center h-screen text-center overflow-hidden">
+        <div class="z-10 max-w-6xl mx-auto px-6">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl text-gray-800 mb-4 fade-in-up">
                 @L["HeroTitle"]
             </h1>
-            <p class="font-space text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-gray-700 mb-10 fade-in-up" style="animation-delay:0.2s;">
                 @L["HeroSubtitle"]
             </p>
-            <a href="#services"
-               class="inline-block bg-white text-accent1 font-semibold py-3 px-8 rounded-full hover:bg-gray-100 transition">
-                @L["ExploreServicesButton"]
-            </a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6 fade-in-up" style="animation-delay:0.4s;">
+                <!-- Explore Services Button -->
+                <a href="#services"
+                   class="group relative inline-block bg-white text-accent1 font-semibold py-3 px-8 rounded-full overflow-hidden transition">
+                    <span class="relative z-10">@L["ExploreServicesButton"]</span>
+                    <span class="absolute inset-0 bg-accent1 scale-x-0 group-hover:scale-x-100
+                       transform origin-left transition-transform duration-300 opacity-20"></span>
+                </a>
+                <!-- Get In Touch Button -->
+                <a href="#contact"
+                   class="group relative inline-block bg-accent1 text-white font-semibold py-3 px-8 rounded-full overflow-hidden transition">
+                    <span class="relative z-10">@L["GetInTouchButton"]</span>
+                    <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100
+                       transform origin-left transition-transform duration-300 opacity-20"></span>
+                </a>
+            </div>
         </div>
     </header>
-
 
 
     <!-- Services Grid -->
@@ -60,6 +122,29 @@
                          Link="@L["Service4_Link"]" />
         </div>
     </main>
+
+@*     <main id="services" class="py-20 px-6 bg-background">
+        <h2 class="text-3xl font-semibold text-center mb-12">@L["OurServicesHeading"]</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            @foreach (var svc in Services)
+            {
+                <div class="service-card fade-in-up bg-white p-6 rounded-lg shadow hover:shadow-lg">
+                    <div class="text-accent1 text-4xl mb-4"><i class="bi @svc.Icon"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">@svc.Title</h3>
+                    <ul class="list-disc list-inside text-gray-600 mb-4">
+                        @foreach (var pt in svc.Points)
+                        {
+                            <li>@pt</li>
+                        }
+                    </ul>
+                    <a href="@svc.Link" class="text-accent1 font-medium hover:underline">
+                        @L["LearnMore"]
+                    </a>
+                </div>
+            }
+        </div>
+    </main> *@
+
 
     <!-- About Us -->
     <section id="about" class="py-16 px-6 bg-white">
@@ -149,9 +234,63 @@
         </div>
     </section>
 </div>
-
 @code {
-    private bool isMenuOpen;
+    record Service(string Icon, string Title, List<string> Points, string Link);
+    List<Service> Services;
+
+    protected override void OnInitialized()
+    {
+        Services = new List<Service>
+        {
+            new(
+                "bi-compass",
+                L["Service1_Title"],
+                new List<string>
+                {
+                    L["Service1_Point1"],
+                    L["Service1_Point2"],
+                    L["Service1_Point3"]
+                },
+                L["Service1_Link"]
+            ),
+            new(
+                "bi-diagram-3",
+                L["Service2_Title"],
+                new List<string>
+                {
+                    L["Service2_Point1"],
+                    L["Service2_Point2"],
+                    L["Service2_Point3"]
+                },
+                L["Service2_Link"]
+            ),
+            new(
+                "bi-cpu",
+                L["Service3_Title"],
+                new List<string>
+                {
+                    L["Service3_Point1"],
+                    L["Service3_Point2"],
+                    L["Service3_Point3"]
+                },
+                L["Service3_Link"]
+            ),
+            new(
+                "bi-tools",
+                L["Service4_Title"],
+                new List<string>
+                {
+                    L["Service4_Point1"],
+                    L["Service4_Point2"],
+                    L["Service4_Point3"]
+                },
+                L["Service4_Link"]
+            )
+        };
+    }
+
+
+    bool isMenuOpen;
     void ToggleMenu() => isMenuOpen = !isMenuOpen;
 
     string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
