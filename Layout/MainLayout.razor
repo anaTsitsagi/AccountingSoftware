@@ -7,41 +7,59 @@
 @inject IStringLocalizer<MainLayout> L
 
 <div class="page">
-    <!-- 1) Compact white nav at top with larger logo -->
     <nav class="bg-white sticky top-0 left-0 w-full z-20">
         <div class="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
             <a href="/" class="text-2xl md:text-3xl font-space font-bold text-accent1 hover:text-accent2 transition">
-                logyx<span class="text-gray-800">.tech</span>
+                logyx<span class="text-gray-800 text-xl md:text-2xl">.tech</span>
             </a>
-
             <!-- Desktop menu -->
-            <ul class="hidden md:flex items-center space-x-6">
+            <ul class="hidden md:flex items-center space-x-4">
+                <!-- tighter spacing -->
                 <li>
-                    <a href="#services"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition">
+                    <NavLink href="#services"
+                             class="px-2 py-2 rounded text-gray-800 font-normal transition hover:text-green-500 focus:outline-none"
+                             activeClass="bg-accent2 text-white">
                         @L["Nav_Services"]
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
-                    <a href="#about"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition">
+                    <NavLink href="#about"
+                             class="px-2 py-2 rounded text-gray-800 font-normal transition hover:text-green-500 focus:outline-none"
+                             activeClass="bg-accent2 text-white">
                         @L["Nav_About"]
-                    </a>
+                    </NavLink>
                 </li>
                 <li>
                     <a href="#contact"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition">
+                       class="px-4 py-2 border border-purple-400 rounded-full text-purple-500 font-normal transition hover:text-purple-500 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-300">
                         @L["Nav_Contact"]
                     </a>
                 </li>
-                <li>
-                    <select class="border border-accent1 text-accent1 rounded p-1 text-sm hover:border-accent2 hover:text-accent2 transition"
-                            @onchange="ChangeCulture"
-                            value="@currentCulture">
-                        <option value="en">@L["Lang_EN"]</option>
-                        <option value="ru">@L["Lang_RU"]</option>
-                        <option value="ka">@L["Lang_KA"]</option>
-                    </select>
+                <!-- Language Picker -->
+                <li class="relative">
+                    <button @onclick="ToggleLangMenuDesktop"
+                            class="flex items-center justify-between bg-white border border-gray-300 rounded-full
+                                   px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent2">
+                        @currentCulture.ToUpper()
+                        <svg class="w-4 h-4 ml-2 text-gray-500 transform transition-transform duration-200 @(isLangOpenDesktop ? "rotate-180" : "")"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    @if (isLangOpenDesktop)
+                    {
+                        <ul class="absolute right-0 mt-2 w-24 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden z-10">
+                            @foreach (var (code, label) in languages)
+                            {
+                                <li @onclick="() => SelectLang(code)"
+                                    class="px-4 py-2 text-center text-gray-700 cursor-pointer transition
+                                           hover:ring-2 hover:ring-accent2 hover:text-green-500">
+                                    @label
+                                </li>
+                            }
+                        </ul>
+                    }
                 </li>
             </ul>
 
@@ -67,50 +85,66 @@
         </div>
 
         <!-- Mobile menu panel -->
-        <div class="md:hidden bg-white transition-max-h duration-300 overflow-hidden"
-             style="max-height:@(isMenuOpen ? "300px" : "0")">
-            <ul class="flex flex-col px-6 py-4 space-y-4">
+        <div class="md:hidden bg-white menu-collapse overflow-visible"
+             style="max-height:@(isMenuOpen ? "500px" : "0"); opacity:@(isMenuOpen ? "1" : "0")">
+            <ul class="flex flex-col px-6 py-4 space-y-2">
+                <!-- tighter vertical spacing -->
                 <li>
                     <a href="#services"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition"
-                       @onclick="ToggleMenu">
+                       @onclick="ToggleMenu"
+                       class="block px-4 py-2 rounded text-center text-gray-800 font-normal transition hover:ring-2 hover:ring-accent2 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-accent2">
                         @L["Nav_Services"]
                     </a>
                 </li>
                 <li>
                     <a href="#about"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition"
-                       @onclick="ToggleMenu">
+                       @onclick="ToggleMenu"
+                       class="block px-4 py-2 rounded text-center text-gray-800 font-normal transition hover:ring-2 hover:ring-accent2 hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-accent2">
                         @L["Nav_About"]
                     </a>
                 </li>
                 <li>
                     <a href="#contact"
-                       class="text-gray-800 font-normal hover:text-gray-600 hover:scale-110 transform transition"
-                       @onclick="ToggleMenu">
+                       @onclick="ToggleMenu"
+                       class="block px-4 py-2 border text-center text-purple-800 border-purple-300 rounded-full font-normal transition hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-purple-300">
                         @L["Nav_Contact"]
                     </a>
                 </li>
-                <li>
-                    <select class="border border-accent1 text-accent1 rounded p-1 text-sm hover:border-accent2 hover:text-accent2 transition"
-                            @onchange="ChangeCulture"
-                            value="@currentCulture">
-                        <option value="en">@L["Lang_EN"]</option>
-                        <option value="ru">@L["Lang_RU"]</option>
-                        <option value="ka">@L["Lang_KA"]</option>
-                    </select>
+                <!-- Mobile Language Picker -->
+                <li class="relative">
+                    <button @onclick="ToggleLangMenuMobile"
+                            class="w-full flex items-center justify-between bg-white border border-gray-300 rounded-full
+                                   px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent2">
+                        @currentCulture.ToUpper()
+                        <svg class="w-4 h-4 ml-2 text-gray-500 transform transition-transform duration-200 @(isLangOpenMobile ? "rotate-180" : "")"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    @if (isLangOpenMobile)
+                    {
+                        <ul class="absolute left-0 mt-2 w-full bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden z-50">
+                            @foreach (var (code, label) in languages)
+                            {
+                                <li @onclick="() => SelectLang(code)"
+                                    class="px-4 py-2 text-center text-gray-700 cursor-pointer transition
+                                           hover:ring-2 hover:ring-accent2 hover:text-green-500">
+                                    @label
+                                </li>
+                            }
+                        </ul>
+                    }
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- 2) Normal flow content: no top-padding needed -->
     <main class="m-0 p-0 w-full pt-0">
         <article class="m-0 p-0 w-full">
             @Body
         </article>
 
-        <!-- Footer -->
         <footer class="bg-accent1 text-white py-4">
             <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6">
                 <div class="text-sm">@L["Footer_Copyright"]</div>
@@ -124,14 +158,23 @@
 
 @code {
     private bool isMenuOpen;
+    private bool isLangOpenDesktop;
+    private bool isLangOpenMobile;
+
     string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
-    void ToggleMenu() => isMenuOpen = !isMenuOpen;
+    readonly (string Code, string Label)[] languages =
+         { ("en","EN"), ("ru","RU"), ("ka","KA") };
 
-    async Task ChangeCulture(ChangeEventArgs e)
+    void ToggleMenu() => isMenuOpen = !isMenuOpen;
+    void ToggleLangMenuDesktop() => isLangOpenDesktop = !isLangOpenDesktop;
+    void ToggleLangMenuMobile() => isLangOpenMobile = !isLangOpenMobile;
+
+    async Task SelectLang(string code)
     {
-        var culture = e.Value.ToString();
-        await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", culture);
+        await JS.InvokeVoidAsync("localStorage.setItem", "blazorCulture", code.ToLowerInvariant());
+        isLangOpenDesktop = false;
+        isLangOpenMobile = false;
         Nav.NavigateTo(Nav.Uri, forceLoad: true);
     }
 }
