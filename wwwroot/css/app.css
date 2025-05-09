@@ -168,3 +168,15 @@ article {
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     overflow: hidden;
 }
+
+#about p {
+    color: #e5e7eb; /* Tailwind’s gray-200 for a softer white */
+}
+
+contact {
+    background-color: #1f2937; /* e.g. Tailwind’s gray-800 */
+}
+
+    contact h2, contact label, contact input, contact p {
+        color: #e5e7eb;
+    }
