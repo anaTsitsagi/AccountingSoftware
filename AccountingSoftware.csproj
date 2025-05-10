@@ -11,11 +11,6 @@
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="wwwroot\images\banner.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Pages\Index.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>

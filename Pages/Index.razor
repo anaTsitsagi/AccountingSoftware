@@ -100,56 +100,66 @@
         </h2>
 
         <div class="max-w-screen-xl mx-auto
-           grid grid-cols-1
-                sm:grid-cols-2
-                xl:grid-cols-4
-           gap-2">
+                 grid grid-cols-1
+                      sm:grid-cols-2   /* tablets & up get 2 cols */
+                      lg:grid-cols-4   /* laptops & up get 4 cols */
+                 gap-1">
             <ServiceCard Icon="bi-compass"
                          Title="@L["Service1_Title"]"
                          Description="@L["Service1_Description"]"
-                         BackText="@L["Service1_BackText"]"
                          Link="@L["Service1_Link"]"
                          Tags="@(new[] { "BUDGET", "TOOLS", "ARCHITECTURE" })" />
             <ServiceCard Icon="bi-diagram-3"
                          Title="@L["Service2_Title"]"
                          Description="@L["Service2_Description"]"
-                         BackText="@L["Service2_BackText"]"
                          Link="@L["Service2_Link"]"
                          Tags="@(new[] { "PLAN", "DESIGN", "SOLUTION", "COLLABORATION", "AGREEMENT" })"/>
 
             <ServiceCard Icon="bi-cpu"
                          Title="@L["Service3_Title"]"
                          Description="@L["Service3_Description"]"
-                         BackText="@L["Service3_BackText"]"
                          Link="@L["Service3_Link"]" 
                          Tags="@(new[] { "DESKTOP", "API", "WEB", "MOBILE", "AI","CLOUD","INTEGRATION" })" />
 
             <ServiceCard Icon="bi-tools"
                          Title="@L["Service4_Title"]"
                          Description="@L["Service4_Description"]"
-                         BackText="@L["Service4_BackText"]"
                          Link="@L["Service4_Link"]" 
                          Tags="@(new[] { "SUPPORT", "4 LAYERS", "L1 SUPPORT", "L2 SUPPORT", "L3 SUPPORT","REDESIGN" })" />
         </div>
     </main>
 
-    <!-- About Us -->
-    <section id="about" class="py-16 px-6 bg-black text-white">
-        <div class="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <img src="/images/about-us.jpg"
-                 alt="@L["AboutSection_Title"] illustration"
-                 class="w-full rounded-xl shadow-md" />
-            <div>
-                <h2 class="text-3xl font-bold mb-4">@L["AboutSection_Title"]</h2>
-                <p class="mb-4 leading-relaxed">@L["AboutParagraph1"]</p>
-                <p class="mb-6 leading-relaxed">@L["AboutParagraph2"]</p>
-                <a href="#contact"
-                   class="inline-block bg-accent1 text-black font-medium py-2 px-6 rounded-full hover:bg-accent2 transition">   
-                    @L["GetInTouchButton"]
-                </a>
-            </div>
+    <section id="tech-stack" class="py-16 px-6 bg-gray-100 text-black">
+        <div class="max-w-screen-xl mx-auto text-center mb-8 px-6">
+            <h2 class="text-3xl font-bold">Tech Stack at Logyx</h2>
+        </div>
+        <div class="max-w-screen-xl mx-auto px-6 py-8">
+            <TechIconsScroller IconUrls="@_techIcons" />
         </div>
     </section>
+
+
+    <!-- About Us -->
+    <section id="about" class="py-20 px-6 bg-black text-white">
+        <!-- Section Title at the top -->
+        <div class="max-w-screen-xl mx-auto text-center mb-12 px-6">
+            <h2 class="text-3xl font-bold">@L["AboutSection_Title"]</h2>
+        </div>
+
+        <!-- Float layout: image on left, text flows beside then below if longer -->
+        <div class="max-w-screen-xl mx-auto px-6 mb-12">
+            <img src="/images/about-us.jpg"
+                 alt="@L["AboutSection_Title"] illustration"
+                 class="float-left w-full md:w-1/2 lg:w-1/3 mr-6 mb-6 rounded-xl shadow-md" />
+            <p class="mb-4 leading-relaxed">@L["AboutParagraph1"]</p>
+            <p class="mb-6 leading-relaxed">@L["AboutParagraph2"]</p>
+            <a href="#contact"
+               class="inline-block bg-accent1 text-black font-medium py-2 px-6 rounded-full hover:bg-accent2 transition">
+                @L["GetInTouchButton"]
+            </a>
+        </div>
+    </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-12 bg-background">
@@ -225,6 +235,19 @@
 
     bool isMenuOpen;
     void ToggleMenu() => isMenuOpen = !isMenuOpen;
+
+
+    private readonly string[] _techIcons = new[]
+       {
+        "/images/tech/dotnet.svg",
+        "/images/tech/blazor.svg",
+        "/images/tech/react.svg",
+        "/images/tech/angular.svg",
+        "/images/tech/nodejs.svg",
+        "/images/tech/docker.svg",
+        "/images/tech/aws.svg",
+        "/images/tech/azure.svg"
+    };
 
     string currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
     async Task ChangeCulture(ChangeEventArgs e)

@@ -136,9 +136,11 @@ to scale your business</value>
   </data>
   <data name="Service1_Description" xml:space="preserve">
     <value>
-      > In‑depth understanding of your business needs &#xD;&#xA;
-      > alignment to budget &#xD;&#xA;
-      > Detailed plan of architecture, tools, and processes
+      &gt; In‑depth understanding of your business needs 
+
+      &gt; alignment to budget 
+
+      &gt; Detailed plan of architecture, tools, and processes
     </value>
   </data>
   <data name="Service1_BackText" xml:space="preserve">
@@ -153,10 +155,13 @@ to scale your business</value>
   </data>
   <data name="Service2_Description" xml:space="preserve">
     <value>
-      > You bring a clear business idea and strategy &#xD;&#xA;
-      > We analyze modules, write technical specs &#xD;&#xA;
-      > Build a delivery pipeline, define all tasks &#xD;&#xA;
-      > Share plans via Jira, Trello, or Azure DevOps 
+      &gt; You bring a clear business idea and strategy 
+
+      &gt; We analyze modules, write technical specs 
+
+      &gt; Build a delivery pipeline, define all tasks 
+
+      &gt; Share plans via Jira, Trello, or Azure DevOps 
     </value>
   </data>
   <data name="Service2_BackText" xml:space="preserve">
@@ -170,12 +175,17 @@ to scale your business</value>
   </data>
   <data name="Service3_Description" xml:space="preserve">
     <value>
-      > Desktop applications &#xD;&#xA;
-      > scalable backend services &#xD;&#xA;
-      > Mobile apps &#xD;&#xA;
-      > Integrate existing software &#xD;&#xA;
-      > Cloud services &#xD;&#xA;
-      > AI integration
+      &gt; Desktop applications 
+
+      &gt; scalable backend services 
+
+      &gt; Mobile apps 
+
+      &gt; Integrate existing software 
+
+      &gt; Cloud services 
+
+      &gt; AI integration
     </value>
   </data>
   <data name="Service3_BackText" xml:space="preserve">
@@ -189,10 +199,14 @@ to scale your business</value>
   </data>
   <data name="Service4_Description" xml:space="preserve">
     <value>
-      > Ongoing support for all delivered apps &#xD;&#xA;
-      > four levels of service &#xD;&#xA;
-      > on‑demand solution reviews &#xD;&#xA;
-      > updated designs with implementation roadmaps &#xD;&#xA;
+      &gt; Ongoing support for all delivered apps 
+
+      &gt; four levels of service 
+
+      &gt; on‑demand solution reviews 
+
+      &gt; updated designs with implementation roadmaps 
+
     </value>
   </data>
   <data name="Service4_BackText" xml:space="preserve">
@@ -241,10 +255,17 @@ to scale your business</value>
     <value>About Logyx.tech</value>
   </data>
   <data name="AboutParagraph1" xml:space="preserve">
-    <value>At Logyx.tech, we’re passionate about turning your vision into reality. With years of experience in IT strategy, solution design, and end‑to‑end development, our team partners with you to craft tailored software solutions that scale.</value>
+    <value>At Logyx.tech, we measure our success by yours. We’re passionate about building long-term relationships, sharing knowledge, and empowering your team with transparent communication and hands-on training. Let us help you navigate today’s complex technology landscape—and turn your next big idea into a competitive advantage.
+Our client-first approach means we start by listening: understanding your customers, processes, and KPIs. We then architect flexible platforms that grow with you—whether it’s a mission-critical enterprise system, a public-facing web portal, or an automated data pipeline in the cloud. By embracing continuous integration, automated testing, and DevOps from day one, we accelerate time-to-market and reduce risk, so you can focus on driving innovation rather than firefighting infrastructure.
+
+</value>
   </data>
   <data name="AboutParagraph2" xml:space="preserve">
-    <value>From the initial brainstorming session to long‑term support and future planning, we’re with you every step of the way—bringing clarity to complexity and innovation to every project.</value>
+    <value>At Logyx.tech, our partnership truly begins long before a single line of code is written. It starts with an in-depth discovery workshop, where we dive into your business goals, user needs, and technical constraints—ensuring we capture every nuance of your vision. From there, we move into collaborative planning and prototyping, running rapid design sprints to validate concepts, refine user journeys, and create interactive mockups that bring ideas to life.
+
+Once the plan is locked down, our cross-functional teams spring into action: developers, QA engineers, and DevOps specialists work hand-in-hand in agile iterations, continuously integrating feedback, automating tests, and deploying incremental releases so you see value from day one. We don’t just ship a product and walk away—our dedicated support squad monitors performance, troubleshoots issues, and helps you adopt new features smoothly.
+
+Looking ahead, we partner on your roadmap: evaluating emerging technologies, optimizing your architecture for scale and cost-efficiency, and planning feature rollouts that keep you ahead of the curve. At every stage—from initial brainstorming through launch, support, and beyond—Logyx.tech brings clarity to complexity and innovation to every project, ensuring you have both the technical expertise and strategic guidance to succeed today and tomorrow.</value>
   </data>
   <data name="GetInTouchButton" xml:space="preserve">
     <value>Get in Touch</value>

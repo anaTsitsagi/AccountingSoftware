@@ -1,39 +1,43 @@
 ﻿@page "/services"
 @using Microsoft.AspNetCore.Components.Routing
+@using AccountingSoftware.Shared
+@inject NavigationManager Nav
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.Extensions.Localization
+@using System.Globalization;
+@inject IStringLocalizer<Index> L
+@inject IJSRuntime JS
 @inject NavigationManager Nav
 
-<div class="max-w-6xl mx-auto mb-16 px-6 pt-12">
-    <!-- Page title -->
-    <h1 class="text-3xl font-bold mb-8">Our Services</h1>
+<div class="max-w-screen-xl mx-auto
+           grid grid-cols-1
+                sm:grid-cols-2
+                xl:grid-cols-4
+           gap-2">
+            <ServiceCard Icon="bi-compass"
+                         Title="@L["Service1_Title"]"
+                         Description="@L["Service1_Description"]"
+                         BackText="@L["Service1_BackText"]"
+                         Link="@L["Service1_Link"]"
+                         Tags="@(new[] { "BUDGET", "TOOLS", "ARCHITECTURE" })" />
+            <ServiceCard Icon="bi-diagram-3"
+                         Title="@L["Service2_Title"]"
+                         Description="@L["Service2_Description"]"
+                         BackText="@L["Service2_BackText"]"
+                         Link="@L["Service2_Link"]"
+                         Tags="@(new[] { "PLAN", "DESIGN", "SOLUTION", "COLLABORATION", "AGREEMENT" })"/>
 
-    <!-- Services grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Solution Design -->
-        <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold mb-2">Solution Design</h2>
-            <p class="mb-4">Craft tailored, scalable solutions that align with your business objectives and technology roadmap.</p>
-            <NavLink class="text-blue-600 hover:underline" href="/services/solution-design" Match="NavLinkMatch.All">Learn more</NavLink>
-        </div>
+            <ServiceCard Icon="bi-cpu"
+                         Title="@L["Service3_Title"]"
+                         Description="@L["Service3_Description"]"
+                         BackText="@L["Service3_BackText"]"
+                         Link="@L["Service3_Link"]" 
+                         Tags="@(new[] { "DESKTOP", "API", "WEB", "MOBILE", "AI","CLOUD","INTEGRATION" })" />
 
-        <!-- Software Development -->
-        <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold mb-2">Software Development</h2>
-            <p class="mb-4">End-to-end application development across web, mobile, and desktop platforms to drive innovation.</p>
-            <NavLink class="text-blue-600 hover:underline" href="/services/e2e-development" Match="NavLinkMatch.All">Learn more</NavLink>
+            <ServiceCard Icon="bi-tools"
+                         Title="@L["Service4_Title"]"
+                         Description="@L["Service4_Description"]"
+                         BackText="@L["Service4_BackText"]"
+                         Link="@L["Service4_Link"]" 
+                         Tags="@(new[] { "SUPPORT", "4 LAYERS", "L1 SUPPORT", "L2 SUPPORT", "L3 SUPPORT","REDESIGN" })" />
         </div>
-
-        <!-- Support -->
-        <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold mb-2">Support & Maintenance</h2>
-            <p class="mb-4">Reliable, ongoing support and maintenance services to ensure optimal performance and uptime.</p>
-            <NavLink class="text-blue-600 hover:underline" href="/services/support" Match="NavLinkMatch.All">Learn more</NavLink>
-        </div>
-
-        <!-- Fourth Service (Placeholder) -->
-        <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <h2 class="text-xl font-semibold mb-2">[Fourth Service]</h2>
-            <p class="mb-4">Brief summary of the fourth service goes here.</p>
-            <NavLink class="text-blue-600 hover:underline" href="/[fourth-service-route]" Match="NavLinkMatch.All">Learn more</NavLink>
-        </div>
-    </div>
-</div>
