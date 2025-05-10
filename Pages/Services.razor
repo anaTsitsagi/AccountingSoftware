@@ -9,35 +9,33 @@
 @inject IJSRuntime JS
 @inject NavigationManager Nav
 
-<div class="max-w-screen-xl mx-auto
-           grid grid-cols-1
-                sm:grid-cols-2
-                xl:grid-cols-4
-           gap-2">
-            <ServiceCard Icon="bi-compass"
-                         Title="@L["Service1_Title"]"
-                         Description="@L["Service1_Description"]"
-                         BackText="@L["Service1_BackText"]"
-                         Link="@L["Service1_Link"]"
-                         Tags="@(new[] { "BUDGET", "TOOLS", "ARCHITECTURE" })" />
-            <ServiceCard Icon="bi-diagram-3"
-                         Title="@L["Service2_Title"]"
-                         Description="@L["Service2_Description"]"
-                         BackText="@L["Service2_BackText"]"
-                         Link="@L["Service2_Link"]"
-                         Tags="@(new[] { "PLAN", "DESIGN", "SOLUTION", "COLLABORATION", "AGREEMENT" })"/>
+<main id="services" class="py-20 px-6 bg-background">
+    <div class="max-w-screen-xl mx-auto
+                 grid grid-cols-1
+                      sm:grid-cols-2   /* tablets & up get 2 cols */
+                      lg:grid-cols-4   /* laptops & up get 4 cols */
+                 gap-1">
+        <ServiceCard Icon="bi-compass"
+                     Title="@L["Service1_Title"]"
+                     Description="@L["Service1_Description"]"
+                     Link="@L["Service1_Link"]"
+                     Tags="@(new[] { "BUDGET", "TOOLS", "ARCHITECTURE" })" />
+        <ServiceCard Icon="bi-diagram-3"
+                     Title="@L["Service2_Title"]"
+                     Description="@L["Service2_Description"]"
+                     Link="@L["Service2_Link"]"
+                     Tags="@(new[] { "PLAN", "DESIGN", "SOLUTION", "COLLABORATION", "AGREEMENT" })" />
 
-            <ServiceCard Icon="bi-cpu"
-                         Title="@L["Service3_Title"]"
-                         Description="@L["Service3_Description"]"
-                         BackText="@L["Service3_BackText"]"
-                         Link="@L["Service3_Link"]" 
-                         Tags="@(new[] { "DESKTOP", "API", "WEB", "MOBILE", "AI","CLOUD","INTEGRATION" })" />
+        <ServiceCard Icon="bi-cpu"
+                     Title="@L["Service3_Title"]"
+                     Description="@L["Service3_Description"]"
+                     Link="@L["Service3_Link"]"
+                     Tags="@(new[] { "DESKTOP", "API", "WEB", "MOBILE", "AI","CLOUD","INTEGRATION" })" />
 
-            <ServiceCard Icon="bi-tools"
-                         Title="@L["Service4_Title"]"
-                         Description="@L["Service4_Description"]"
-                         BackText="@L["Service4_BackText"]"
-                         Link="@L["Service4_Link"]" 
-                         Tags="@(new[] { "SUPPORT", "4 LAYERS", "L1 SUPPORT", "L2 SUPPORT", "L3 SUPPORT","REDESIGN" })" />
-        </div>
+        <ServiceCard Icon="bi-tools"
+                     Title="@L["Service4_Title"]"
+                     Description="@L["Service4_Description"]"
+                     Link="@L["Service4_Link"]"
+                     Tags="@(new[] { "SUPPORT", "4 LAYERS", "L1 SUPPORT", "L2 SUPPORT", "L3 SUPPORT","REDESIGN" })" />
+    </div>
+</main>

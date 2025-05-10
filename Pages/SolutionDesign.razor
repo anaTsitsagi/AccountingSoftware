@@ -6,6 +6,12 @@
 @inject IStringLocalizer<SolutionDesign> L
 
 <div class="max-w-6xl mx-auto mb-16 px-6 pt-12">
+        <!-- Back button -->
+    <button class="text-accent1 mb-6 block px-4 py-2 rounded border border-accent1
+                   hover:bg-accent1 hover:text-white transition"
+            @onclick="GoBack">
+        @L["BackButtonText"]
+    </button>
 
     <!-- Page title -->
     <h1 class="text-3xl font-bold mb-8">@L["PageTitle"]</h1>
@@ -47,7 +53,7 @@
 </div>
 
 @code {
-    void GoBack() => Nav.NavigateTo("/");
+    void GoBack() => Nav.NavigateTo("/services");
 
     class Step
     {
