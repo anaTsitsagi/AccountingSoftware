@@ -180,3 +180,9 @@ contact {
     contact h2, contact label, contact input, contact p {
         color: #e5e7eb;
     }
+
+@media (max-width: 640px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}

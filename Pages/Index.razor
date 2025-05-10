@@ -193,7 +193,7 @@
         </div>
     </main>
 
-    <section id="tech-stack" class="py-16 px-6 bg-gray-100 text-black">
+    <section id="tech-stack" class="py-16 px-6 bg-gray-100 text-black overflow-x-auto">
         <div class="max-w-screen-xl mx-auto text-center mb-8 px-6">
             <h2 class="text-3xl font-bold">Tech Stack at Logyx</h2>
         </div>
@@ -214,7 +214,7 @@
         <div class="max-w-screen-xl mx-auto px-6 mb-12">
             <img src="/images/about-us.jpg"
                  alt="@L["AboutSection_Title"] illustration"
-                 class="float-left w-full md:w-1/2 lg:w-1/3 mr-6 mb-6 rounded-xl shadow-md" />
+                 class="hidden sm:block float-left w-full md:w-1/2 lg:w-1/3 mr-6 mb-6 rounded-xl shadow-md" />
             <p class="mb-4 leading-relaxed">@L["AboutParagraph1"]</p>
             <p class="mb-6 leading-relaxed">@L["AboutParagraph2"]</p>
             <a href="#contact"
@@ -252,7 +252,7 @@
                         </div>
                     </div>
                 </div>
-                <img src="/images/ITStrategy.jpg" alt="IT Strategy Illustration" class="w-full rounded-lg shadow-lg" />
+                <img src="/images/ITStrategy.jpg" alt="IT Strategy Illustration" class="hidden sm:block w-full rounded-lg shadow-lg" />
             </div>
             <div class="text-center mt-8">
                 <a href="/services/it-strategy" class="inline-block bg-accent1 text-white font-medium py-3 px-8 rounded-full hover:bg-accent2 transition">
@@ -366,7 +366,7 @@
 
                 <img src="/images/e2e-development.jpg"
                      alt="End-to-End Development Illustration"
-                     class="w-full rounded-lg shadow-lg" />
+                     class="hidden sm:block w-full rounded-lg shadow-lg" />
             </div>
             <div class="text-center mt-8">
                 <a href="/services/e2e-development"
@@ -380,8 +380,8 @@
 
     <!-- Support Summary Section -->
     <section id="support-summary"
-             class="h-screen bg-gradient-to-br from-indigo-50 to-white text-black">
-        <div class="max-w-screen-xl mx-auto h-full flex items-center px-6">
+             class="h-auto py-16 md:h-screen bg-gradient-to-br from-indigo-50 to-white text-black">
+        <div class="max-w-screen-xl mx-auto h-full flex items-start md:items-center px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
 
                 <!-- Left container: heading + copy -->
