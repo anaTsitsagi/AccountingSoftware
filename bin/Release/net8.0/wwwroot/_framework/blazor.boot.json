@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AccountingSoftware",
   "resources": {
-    "hash": "sha256-/ghPQxmauYSoZ5swHIa9Xg1izIibHZzKO7mmtaLXAds=",
+    "hash": "sha256-ymxHjDtsowx3D9uiY9nBA3Hpnb5fgj9KDghYZUPjMz0=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-9Fzd5We95Rp03dEKIAbYjPDR3eWyLbmjMlYStvxyiok="
     },
@@ -209,17 +209,17 @@
       "mscorlib.wasm": "sha256-MZJ1V6miMP318lQowft4FPkcszcibPLDTwKj235fSAc=",
       "netstandard.wasm": "sha256-RYAURbR1AHkUZYjKgu+B/i3N3VP4abnAaH+vxwJ8d3c=",
       "System.Private.CoreLib.wasm": "sha256-4YzdATaWUDkUkRpe+hl+T61TaCjRVapVUtqTIai3Gd8=",
-      "AccountingSoftware.wasm": "sha256-KH4F487smTD0TrbdDGkaiq8oCx0OTuqRdOvYX5FjCRs="
+      "AccountingSoftware.wasm": "sha256-Zr2kPdfok5Skj0ejG8BtKUWVeHzbiWcoNTKu1iJvXNE="
     },
     "pdb": {
-      "AccountingSoftware.pdb": "sha256-nMa5HcHg3n7J7ogNAgnAEmnCo0G6uoBeBvcXBJ4/9wA="
+      "AccountingSoftware.pdb": "sha256-FrftPqCIEbByAwWwDh0JP5f0rOiJoiB9OpnB0xTdD3Y="
     },
     "satelliteResources": {
       "ka": {
-        "AccountingSoftware.resources.wasm": "sha256-pR2X/2mAy0M/JGtmo/IBAVc+ocL6y1pzNCkSyjZDnQg="
+        "AccountingSoftware.resources.wasm": "sha256-jIwVBjBbYYcRui8KXOf/oR7AVJRsqDy9ovzT5QgHFHk="
       },
       "ru": {
-        "AccountingSoftware.resources.wasm": "sha256-AOTql2D3Fuycj2ZNuOd9BIalZTamADoCNNt15nun+7M="
+        "AccountingSoftware.resources.wasm": "sha256-mV8B9r+swtSakibatHQrcwisuRBUjAgaBmRXQ51dzR8="
       }
     }
   },
